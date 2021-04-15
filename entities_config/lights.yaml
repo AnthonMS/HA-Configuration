@@ -1,0 +1,348 @@
+# #### Dummy Lights ####
+# - platform: template
+#   lights:
+# ## Basement
+#     # basement_entrance:
+#     #   friendly_name: Basement Entrance
+#     #   turn_on:
+#     #     service: input_boolean.turn_on
+#     #     entity_id: input_boolean.basement_entrance
+#     #   turn_off:
+#     #     service: input_boolean.turn_off
+#     #     entity_id: input_boolean.basement_entrance
+#     #   set_level:
+#     #     service: input_number.set_value
+#     #     data_template:
+#     #       value: "{{ brightness }}"
+#     #       entity_id: input_number.basement_entrance
+#     basement_workshop:
+#       friendly_name: Workshop
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.basement_workshop
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.basement_workshop
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.basement_workshop
+#     # basement_hall:
+#     #   friendly_name: Basement Hall
+#     #   turn_on:
+#     #     service: input_boolean.turn_on
+#     #     entity_id: input_boolean.basement_hall
+#     #   turn_off:
+#     #     service: input_boolean.turn_off
+#     #     entity_id: input_boolean.basement_hall
+#     #   set_level:
+#     #     service: input_number.set_value
+#     #     data_template:
+#     #       value: "{{ brightness }}"
+#     #       entity_id: input_number.basement_hall
+#     basement_stairs:
+#       friendly_name: Basement Stairs
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.basement_stairs
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.basement_stairs
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.basement_stairs
+#     basement_stair_leds:
+#       friendly_name: Basement Stair LEDs
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.basement_stair_leds
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.basement_stair_leds
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.basement_stair_leds
+#     basement_laundry_room:
+#       friendly_name: Laundry Room
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.basement_laundry_room
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.basement_laundry_room
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.basement_laundry_room
+          
+# ## 1st Floor
+#     entrance:
+#       friendly_name: Entrance
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.entrance
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.entrance
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.entrance
+#     bathroom:
+#       friendly_name: Bathroom
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.bathroom
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.bathroom
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.bathroom
+#     # kitchen:
+#     #   friendly_name: Kitchen
+#     #   turn_on:
+#     #     service: input_boolean.turn_on
+#     #     entity_id: input_boolean.kitchen
+#     #   turn_off:
+#     #     service: input_boolean.turn_off
+#     #     entity_id: input_boolean.kitchen
+#     #   set_level:
+#     #     service: input_number.set_value
+#     #     data_template:
+#     #       value: "{{ brightness }}"
+#     #       entity_id: input_number.kitchen
+#     kitchen_bar:
+#       friendly_name: Kitchen Bar
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.kitchen_bar
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.kitchen_bar
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.kitchen_bar
+#     kitchen_countertop:
+#       friendly_name: Countertop LEDs
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.kitchen_countertop
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.kitchen_countertop
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.kitchen_countertop
+#     # sofa_light:
+#     #   friendly_name: Sofa Light
+#     #   turn_on:
+#     #     service: input_boolean.turn_on
+#     #     entity_id: input_boolean.sofa_light
+#     #   turn_off:
+#     #     service: input_boolean.turn_off
+#     #     entity_id: input_boolean.sofa_light
+#     #   set_level:
+#     #     service: input_number.set_value
+#     #     data_template:
+#     #       value: "{{ brightness }}"
+#     #       entity_id: input_number.sofa_light
+#     dinner_table_light:
+#       friendly_name: Dinner Table Light
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.dinner_table_light
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.dinner_table_light
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.dinner_table_light
+#     corner_lights:
+#       friendly_name: Corner Lights
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.corner_lights
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.corner_lights
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.corner_lights
+#     stair_lights:
+#       friendly_name: Stair Lights
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.stair_lights
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.stair_lights
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.stair_lights
+#     stair_leds:
+#       friendly_name: Stair LEDs
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.stair_leds
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.stair_leds
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.stair_leds
+#     window_candles:
+#       friendly_name: Candles Window
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.window_candles
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.window_candles
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.window_candles
+#     sofa_table_candles:
+#       friendly_name: Candles Sofa Table
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.sofa_table_candles
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.sofa_table_candles
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.sofa_table_candles
+#     speaker_lights:
+#       friendly_name: Speaker Lights
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.speaker_lights
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.speaker_lights
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.speaker_lights
+
+# ## 2nd Floor
+#     bedroom:
+#       friendly_name: Bedroom
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.bedroom
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.bedroom
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.bedroom
+#     bed_leds:
+#       friendly_name: Bed LEDs
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.bed_leds
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.bed_leds
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.bed_leds
+#     beam_leds:
+#       friendly_name: Beam LEDs
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.beam_leds
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.beam_leds
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.beam_leds
+#     nightlight_left:
+#       friendly_name: Nightlight Left
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.nightlight_left
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.nightlight_left
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.nightlight_left
+#     nightlight_right:
+#       friendly_name: Nightlight Right
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.nightlight_right
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.nightlight_right
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.nightlight_right
+#     office:
+#       friendly_name: Office
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.office
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.office
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.office
+#     office_desk_lamp:
+#       friendly_name: Office Desk
+#       turn_on:
+#         service: input_boolean.turn_on
+#         entity_id: input_boolean.office_desk_lamp
+#       turn_off:
+#         service: input_boolean.turn_off
+#         entity_id: input_boolean.office_desk_lamp
+#       set_level:
+#         service: input_number.set_value
+#         data_template:
+#           value: "{{ brightness }}"
+#           entity_id: input_number.office_desk_lamp
+
+

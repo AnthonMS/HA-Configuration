@@ -1,0 +1,127 @@
+### Input Numbers/Sliders configuration ###
+computer_volume:
+  name: Computer Volume
+  initial: 0
+  min: 0
+  max: 100
+  step: 1
+
+# android_tv_1_volume:
+#   name: Android TV 1 Volume
+#   initial: 0
+#   min: 0
+#   max: 1
+#   step: 0.01
+
+
+#### Dummy Entities ####
+### Lights
+## Basement
+# basement_entrance:
+#   name: Basement Entrance
+#   min: 0
+#   max: 255
+# basement_workshop:
+#   name: Workshop
+#   min: 0
+#   max: 255
+# # basement_hall:
+# #   name: Basement Hall
+# #   min: 0
+# #   max: 255
+# basement_stairs:
+#   name: Basement Stairs
+#   min: 0
+#   max: 255
+# basement_stair_leds:
+#   name: Basement Stair LEDs
+#   min: 0
+#   max: 255
+# basement_laundry_room:
+#   name: Laundry Room
+#   min: 0
+#   max: 255
+
+# ## 1st Floor
+# entrance:
+#   name: Entrance
+#   min: 0
+#   max: 255
+# bathroom:
+#   name: Bathroom
+#   min: 0
+#   max: 255
+# # kitchen:
+# #   name: Kitchen
+# #   min: 0
+# #   max: 255
+# kitchen_bar:
+#   name: Kitchen Bar
+#   min: 0
+#   max: 255
+# kitchen_countertop:
+#   name: Countertop LEDs
+#   min: 0
+#   max: 255
+# # sofa_light:
+# #   name: Sofa Light
+# #   min: 0
+# #   max: 255
+# dinner_table_light:
+#   name: Dinner Table Light
+#   min: 0
+#   max: 255
+# corner_lights:
+#   name: Corner Lights
+#   min: 0
+#   max: 255
+# stair_lights:
+#   name: Stair Lights
+#   min: 0
+#   max: 255
+# stair_leds:
+#   name: Stair LEDs
+#   min: 0
+#   max: 255
+# window_candles:
+#   name: Candles Window
+#   min: 0
+#   max: 255
+# sofa_table_candles:
+#   name: Candles Sofa Table
+#   min: 0
+#   max: 255
+# speaker_lights:
+#   name: Speaker Lights
+#   min: 0
+#   max: 255
+
+# ## 2nd Floor
+# bedroom:
+#   name: Bedroom
+#   min: 0
+#   max: 255
+# bed_leds:
+#   name: Bed LEDs
+#   min: 0
+#   max: 255
+# beam_leds:
+#   name: Beam LEDs
+#   min: 0
+#   max: 255
+# nightlight_left:
+#   name: Nightlight Left
+#   min: 0
+#   max: 255
+# nightlight_right:
+#   name: Nightlight Right
+#   min: 0
+#   max: 255
+# office:
+#   name: Office
+#   min: 0
+#   max: 255
+# office_desk_lamp:
+#   name: Office Desk
+#   min: 0
+#   max: 255

@@ -1,0 +1,37 @@
+floorplan_floor:
+  name: Select Floorplan View
+  options:
+    - "1st Floor"
+    - "2nd Floor"
+    - "Basement"
+  initial: "Basement"
+  icon: mdi:floor-plan
+
+speaker_select:
+  name: Speaker
+  options:
+    - Living Room Sonos # media_player.living_room_speakers
+    - Living Room Google # media_player.living_room_google_speaker
+    - Kitchen Display # media_player.kitchen_display
+    - Office Google # media_player.office_google
+  initial: Living Room Sonos
+  icon: mdi:radio-fm
+
+
+radio_channel:
+  name: Radio Kanal
+  options:
+    - Nova FM
+    - Pop FM
+    - The Voice
+    - DR P1
+    - DR P2
+    - DR P3
+    - DR P4 Sjælland
+    - DR P5
+    - DR P6 BEAT
+    - DR P7 MIX
+    - DR P8 JAZZ
+    - DR Nyheder
+  initial: Pop FM
+  icon: mdi:radio-fm

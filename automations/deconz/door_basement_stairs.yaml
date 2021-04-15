@@ -1,0 +1,26 @@
+- id: 'door_opened_basement_stairs'
+  alias: Door Opened Basement Stairs
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.basement_stairs_door
+      from: 'off'
+      to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.basement_hall_spots
+      # data:
+      #   entity_id: light.basement_hall
+      #   brightness_pct: 100
+      #   transition: 0.3
+
+
+- alias: Door Closed Basement Stairs
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.basement_stairs_door
+      from: 'on'
+      to: 'off'
+      for: '00:05:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.basement_hall_spots

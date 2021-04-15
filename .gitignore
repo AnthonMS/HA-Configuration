@@ -1,0 +1,31 @@
+# Example .gitignore file for your config dir.
+# An * ensures that everything will be ignored.
+# You can whitelist files/folders with !, these will not be ignored.
+# !*.yaml
+
+# Ignore folders.
+.HA_VERSION
+.cloud
+.storage
+.vscode
+appdaemon
+custom_components
+custom_icons
+esphome
+deps
+tts
+entities_config/device_trackers.yaml
+entities_config/cameras.yaml
+www/community
+www/images/floorplan
+www/images/snapshots
+www/images/profile_picture_anthon.jpg
+www/images/profile_picture_dagmar.jpg
+
+home-assistant_v2.db
+home-assistant.log
+secrets.yaml
+zigbee.db
+
+scripts/lock.yaml
+scripts/notify_door_bell.yaml

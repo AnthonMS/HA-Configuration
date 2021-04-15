@@ -1,0 +1,450 @@
+homeassistant:
+  packages: !include_dir_named packages
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 0
+  unit_system: metric
+  time_zone: !secret time_zone
+  customize: !include customize.yaml
+
+logger:
+  default: error
+
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# http:
+#   base_url: !secret nabu_casa_url
+# #   base_url: !secret duck_url
+# #   ssl_certificate: /ssl/fullchain.pem
+# #   ssl_key: /ssl/privkey.pem
+
+frontend:
+  #javascript_version: latest
+  themes: !include_dir_merge_named themes
+
+discovery:
+
+# Text to speech
+tts:
+  - platform: google_translate
+    language: 'da'
+
+mobile_app:
+recorder:
+ffmpeg:
+stream:
+wake_on_lan:
+media_extractor:
+python_script:
+
+notify:
+  # - platform: html5
+  #   name: html5
+  #   vapid_pub_key: !secret vapid_pub_key
+  #   vapid_prv_key: !secret vapid_prv_key
+  #   vapid_email: !secret gmail
+  - platform: nfandroidtv
+    name: Living Room TV
+    host: 192.168.1.14
+
+browser_mod:
+  devices:
+    0f5edae6_eeddb365:
+      name: Anthon PC Brave
+    b799fd58_1101406b:
+      name: Anthon PC Brave Local
+    3f40eec3_6d4149f8:
+      name: Anthon Phone
+    fca7aa59_6d7bd784:
+      name: Anthon Phone Local
+    cadbb555_98e40324:
+      name: Anthon Laptop Local
+    88a2b663_af74b994:
+      name: Anthon Laptop
+    adecf13c_baede253:
+      name: iPad Living Room
+
+
+media_player:
+  - platform: androidtv
+    name: Living Room TV
+    host: 192.168.1.14
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret home_alarm_code
+    arming_time: 30
+    delay_time: 30
+    trigger_time: 30
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      arming_time: 0
+      delay_time: 0
+
+group: !include groups.yaml
+automation: !include automations.yaml
+automation custom: !include_dir_merge_list automations
+#script: !include scripts.yaml
+script: !include_dir_merge_named scripts
+scene: !include scenes.yaml
+
+light: !include entities_config/lights.yaml
+switch: !include entities_config/switches.yaml
+input_number: !include entities_config/input_numbers.yaml
+input_select: !include entities_config/input_selects.yaml
+input_boolean: !include entities_config/input_booleans.yaml
+input_datetime: !include entities_config/input_datetimes.yaml
+input_text: !include entities_config/input_texts.yaml
+binary_sensor: !include entities_config/binary_sensors.yaml
+sensor: !include entities_config/sensors.yaml
+camera: !include entities_config/cameras.yaml
+device_tracker: !include entities_config/device_trackers.yaml
+
+lovelace:
+  mode: yaml
+  dashboards:
+    ipad-view: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: ui-ipad.yaml
+      title: Ipad
+      icon: mdi:tablet-android
+      show_in_sidebar: true
+      require_admin: false
+    ipad-mini-view: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: ui-ipad-mini.yaml
+      title: Ipad Mini
+      icon: mdi:tablet-android
+      show_in_sidebar: false
+      require_admin: false
+  resources:
+
+    - url: /local/plugins/time-input-row.js
+      type: js
+    - url: /local/plugins/theme-maker.js
+      type: js
+    - url: /local/plugins/slider-card.js?v=41
+      type: module
+      
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: module
+    - url: /hacsfiles/light-entity-card/light-entity-card.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/lovelace-card-tools/card-tools.js
+      type: module
+    - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
+      type: module
+    - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+      type: module
+    - url: /hacsfiles/lovelace-state-switch/state-switch.js
+      type: module
+    - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/hass-bha-icons/hass-bha-icons.js
+      type: module
+    - url: /hacsfiles/decluttering-card/decluttering-card.js
+      type: module
+    - url: /hacsfiles/light-popup-card/light-popup-card.js
+      type: module
+
+    - url: /hacsfiles/lovelace-text-input-row/lovelace-text-input-row.js?v=0.1
+      type: module
+
+      
+    # - url: /local/community/bar-card/bar-card.js
+    #   type: module
+    # - url: /local/community/light-entity-card/light-entity-card.js
+    #   type: module
+    # - url: /local/community/mini-media-player/mini-media-player-bundle.js
+    #   type: module
+    # - url: /local/community/vertical-stack-in-card/vertical-stack-in-card.js
+    #   type: module
+    # - url: /local/community/button-card/button-card.js
+    #   type: module
+    # - url: /local/community/lovelace-card-mod/card-mod.js
+    #   type: module
+    # - url: /local/community/lovelace-card-tools/card-tools.js
+    #   type: module
+    # - url: /local/community/lovelace-fold-entity-row/fold-entity-row.js
+    #   type: module
+    # - url: /local/community/lovelace-slider-entity-row/slider-entity-row.js
+    #   type: module
+    # - url: /local/community/lovelace-state-switch/state-switch.js
+    #   type: module
+    # - url: /local/community/lovelace-time-picker-card/time-picker-card.js
+    #   type: module
+    # - url: /local/community/lovelace-layout-card/layout-card.js
+    #   type: module
+    # - url: /local/community/hass-bha-icons/hass-bha-icons.js
+    #   type: module
+    # - url: /local/community/decluttering-card/decluttering-card.js
+    #   type: module
+    # - url: /local/community/light-popup-card/light-popup-card.js
+    #   type: module
+
+    # - url: /local/community/lovelace-text-input-row/lovelace-text-input-row.js?v=0.1
+    #   type: module
+
+
+### Google Configuration
+cloud:
+  google_actions:
+    filter:
+      exclude_domains:
+        - media_player
+        - input_select
+        - binary_sensor
+        - sensor
+      exclude_entities:
+        - light.configuration_tool_1
+        - light.speaker_right
+        - light.speaker_left
+        - light.speaker_right_old
+        - light.speaker_left_old
+        - light.anthon_laptop
+        - light.anthon_laptop_local
+        - light.anthon_pc_brave
+        - light.anthon_pc_brave_local
+        - light.anthon_phone
+        - light.anthon_phone_local
+        - light.adecf13c_baede253
+        - light.d5d9b57f_c7a7f3f9
+        - light.66109cbe_fdf2dec4
+        - light.da61cc34_3608a08d
+        - light.f67b0c41_34849cdb
+        - light.fa5d940d_0c5100bf
+        - light.b799fd58_1101406b
+        - light.1st_floor
+        - light.basement
+        - light.2nd_floor
+        - input_boolean.anthon_alarm
+        - input_boolean.dummy_entity
+        - switch.sonoffdev2_relay
+
+        - switch.grono_lamp_office_sync_send
+        - switch.grono_lamp_office_sync_receive
+        - switch.grono_lamp_office_nightlight
+
+        - cover.front_door_dafang_move_left_right
+        - cover.front_door_dafang_move_up_down
+        - switch.front_door_dafang_blue_led
+        - switch.front_door_dafang_h264_rtsp_server
+        - switch.front_door_dafang_ir_filter
+        - switch.front_door_dafang_ir_led
+        - switch.front_door_dafang_mjpeg_rtsp_server
+        - switch.front_door_dafang_motion_detection
+        - switch.front_door_dafang_motion_send_mail
+        - switch.front_door_dafang_motion_send_telegram
+        - switch.front_door_dafang_motion_tracking
+        - switch.front_door_dafang_night_mode
+        - switch.front_door_dafang_night_mode_auto
+        - switch.front_door_dafang_recording
+        - switch.front_door_dafang_yellow_led
+        - switch.front_door_dafang_rtsp_server
+        - cover.front_door_cam_move_left_right
+        - cover.front_door_cam_move_up_down
+        - switch.front_door_cam_blue_led
+        - switch.front_door_cam_h264_rtsp_server
+        - switch.front_door_cam_ir_filter
+        - switch.front_door_cam_ir_led
+        - switch.front_door_cam_mjpeg_rtsp_server
+        - switch.front_door_cam_motion_detection
+        - switch.front_door_cam_motion_send_mail
+        - switch.front_door_cam_motion_send_telegram
+        - switch.front_door_cam_motion_tracking
+        - switch.front_door_cam_night_mode
+        - switch.front_door_cam_night_mode_auto
+        - switch.front_door_cam_recording
+        - switch.front_door_cam_yellow_led
+        - switch.grono_lampe_1_nightlight
+        - switch.grono_lampe_1_sync_receive
+        - switch.grono_lampe_1_sync_send
+        # - input_select.floorplan_floor
+        # - input_select.radio_channel
+        # - media_player.alrum
+        # - media_player.anthon_laptop_local
+        # - media_player.anthon_s_vaerelse
+        # - media_player.living_room_speakers
+        # - media_player.living_room_tv
+        # - media_player.living_room_tv_cast
+    entity_config:
+      switch.anthon_pc_wol:
+        name: Computer
+        room: Kontor
+
+      light.basement_entrance_spots:
+        name: Kælder Entré Spots
+        aliases:
+          - Spots Kælder Entré
+          - Kælder Entré Loft
+          - Loft Kælder Entré
+          - Basement Entrance Ceiling
+          - Ceiling Basement Entrance
+          - Basement Entrance Spots
+          - Spots Basement Entrance
+        room: Kælder
+      light.basement_hall_spots:
+        name: Kælder Gang Spots
+        aliases:
+          - Spots Kælder Gang
+          - Kælder Gang Loft
+          - Loft Kælder Gang
+          - Basement Hall Ceiling
+          - Ceiling Basement Hall
+          - Basement Hall Spots
+          - Spots Basement Hall
+        room: Kælder
+      light.basement_room_spots:
+        name: Kælder Værelse Spots
+        aliases:
+          - Spots Kælder Værelse
+          - Kælder Værelse Loft
+          - Loft Kælder Værelse
+          - Basement Room Ceiling
+          - Ceiling Basement Room
+          - Basement Room Spots
+          - Spots Basement Room
+        room: Kælder
+      light.dinner_table_spots:
+        name: Spisebord Spots
+        aliases:
+          - Spots Spisebord
+          - Spisebord Loft
+          - Loft Spisebord
+          - Dinner Table Ceiling
+          - Ceiling Dinner Table
+          - Dinner Table Spots
+          - Spots Dinner Table
+        room: Stue
+      light.entrance_spots:
+        name: Entré Spots
+        aliases:
+          - Spots Entré
+          - Entré Loft
+          - Loft Entré
+          - Entrance Ceiling
+          - Ceiling Entrance
+          - Entrance Spots
+          - Spots Entrance
+        room: Entré
+      light.kitchen_spots:
+        name: Køkken Spots
+        aliases:
+          - Spots Køkken
+          - Køkken Loft
+          - Loft Køkken
+          - Kitchen Ceiling
+          - Ceiling Kitchen
+          - Kitchen Spots
+          - Spots Kitchen
+        room: Køkken
+      light.bar_spots:
+        name: Bar Spots
+        aliases:
+          - Spots Bar
+          - Bar Loft
+          - Loft Bar
+          - Bar Ceiling
+          - Ceiling Bar
+        room: Køkken
+      light.sofa_spots:
+        name: Sofa Spots
+        aliases:
+          - Spots Sofa
+          - Sofa Loft
+          - Loft Sofa
+          - Sofa Ceiling
+          - Ceiling Sofa
+        room: Stue
+      light.speakers:
+        name: Lys Højtalere
+        aliases:
+          - Højtalere Lys
+          - Højtaler Lys
+          - Lys Højtaler
+          - Light Speakers
+        room: Stue
+      light.front_door_spots:
+        name: Hoveddør Spots
+        aliases:
+          - Spots Hoveddør
+          - Hoveddør Loft
+          - Loft Hoveddør
+          - Front Door Ceiling
+          - Ceiling Front Door
+          - Front Door Spots
+          - Spots Front Door
+        room: Hus
+      light.stairs_spots:
+        name: Trappe Spots
+        aliases:
+          - Spots Trappe
+          - Trappe Loft
+          - Loft Trappe
+          - Stairs Ceiling
+          - Ceiling Stairs
+          - Stairs Spots
+          - Spots Stairs
+        room: Trappe
+      light.bedroom_spots:
+        name: Soveværelse Spots
+        aliases:
+          - Spots Soveværelse
+          - Soveværelse Loft
+          - Loft Soveværelse
+          - Bedroom Ceiling
+          - Ceiling Bedroom
+          - Bedroom Spots
+          - Spots Bedroom
+        room: Soveværelse
+      cover.bedroom_blind:
+        name: Gardin Soveværelse
+        aliases:
+          - Soveværelse Gardin
+          - Bedroom Shade
+          - Shade Bedroom
+        room: Soveværelse
+      light.grono_lamp_office:
+        name: Skrivebord
+        aliases:
+          - Lampe Kontor
+          - Kontor Lampe
+          - Kontor Skrivebord
+          - Skrivebord Kontor
+        room: Kontor
+      lock.front_door:
+        name: Hoveddør
+        aliases:
+          - Hoveddør Lås
+          - Lås Hoveddør
+          - Front Door
+          - Front Door Lock
+        room: Hus
+      alarm_control_panel.home_alarm:
+        name: Alarm System
+        aliases:
+          - Hjemme Alarm
+          - Alarm Hjem
+          - Home Alarm
+          - Alarm Home
+          - Alarm System
+        room: Hus

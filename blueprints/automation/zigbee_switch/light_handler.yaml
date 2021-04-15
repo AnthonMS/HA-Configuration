@@ -1,0 +1,73 @@
+blueprint:
+  name: Light Handler
+  description: >
+    Turn on/off and increase/decrease with a zigbee switch and light in deconz. 
+    This will work for ex. Ikea On/Off Dimmer or the left side of FoH switches 
+    like the Niko.
+  domain: automation
+  input:
+    switch_id:
+      name: DeConz Event Switch ID
+      selector:
+        text:
+    light:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data: 
+    id: !input switch_id
+action:
+  - choose:
+
+    - alias: "If on/off event, turn on/off light"
+      conditions:
+        - condition: template
+          value_template: "{{ trigger.event.data.event == 1002 or trigger.event.data.event == 2002 }}"
+      sequence:
+        - service: >
+            {% if trigger.event.data.event == 1002 %}
+              light.turn_on
+            {% elif trigger.event.data.event == 2002 %}
+              light.turn_off
+            {% endif %}
+          data:
+            entity_id: !input light
+
+    - alias: "If increase/decrease event, increase/decrease light"
+      conditions:
+        - condition: template
+          value_template: "{{ trigger.event.data.event == 1001 or trigger.event.data.event == 1003 or trigger.event.data.event == 2001 or trigger.event.data.event == 2003 }}"
+      sequence:
+        - service: deconz.configure
+          data: 
+            entity: !input light
+            field: '/state'
+            data: >
+              {% if trigger.event.data.event == 1001 %}
+                {"bri_inc":254, "transitiontime":20}
+              {% elif trigger.event.data.event == 1003 %}
+                {"bri_inc":0}
+              {% elif trigger.event.data.event == 2001 %}
+                {"bri_inc":-254, "transitiontime":20}
+              {% elif trigger.event.data.event == 2003 %}
+                {"bri_inc":0}
+              {% endif %}
+
+    # - alias: "If increase event and light is off, turn on light at full brightness"
+    #   conditions:
+    #     - condition: template
+    #       value_template: "{{ trigger.event.data.event == 1001 }}"
+    #     - condition: state
+    #       entity_id: !input light
+    #       state: 'off'
+    #   sequence:
+    #     - service: light.turn_on
+    #       data:
+    #         entity_id: !input light
+    #         transition: 0.2
+    #         brightness: 254

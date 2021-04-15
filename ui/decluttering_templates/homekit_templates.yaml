@@ -1,0 +1,217 @@
+light_spots_homekit:
+  default:
+    icon: 'mdi:wall-sconce-flat'
+    name: 'NoName'
+    card_height: 100px
+    card_width: 100%
+  card:
+    type: custom:button-card
+    entity: '[[entity]]'
+    name: '[[name]]'
+    icon: '[[icon]]'
+    show_state: false
+    show_name: true
+    show_label: false
+    styles: 
+      card:
+        - background-color: >
+            [[[
+              if (entity.state == "off") return "rgba(230, 230, 230, 0.5)";
+              else return "rgba(255, 255, 255, 1)";
+            ]]]
+        - border-radius: 10%
+        - height: '[[card_height]]'
+        # - width: 100%
+        - padding: 10%
+        - color: ivory
+        - font-size: 10px
+        - text-shadow: 0px 0px 0px black
+        - text-transform: capitalize
+        - margin: 0px
+      grid:
+        - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+        - grid-template-columns: 1fr 1fr
+        - grid-template-rows: 1fr min-content min-content min-content min-content
+      name:
+        - font-weight: bold
+        - font-size: 13px
+        - color: white
+        - align-self: middle
+        - justify-self: start
+        - padding-bottom: 4px
+        - color: black
+      img_cell:
+        - justify-content: start
+        - align-items: start
+        - margin: none
+      icon:
+        - width: 30px
+        - margin-top: -10%
+        - color: >
+            [[[
+              if (entity.state == "off") return "rgba(86, 86, 86, 0.5)";
+              else return "rgba(253, 216, 53, 1)";
+            ]]]
+      custom_fields:
+        sd:
+          - align-self: middle
+          - justify-self: start
+          - --text-color-sensor: black
+      #    - --text-color-sensor: '[[[ if (states["sensor.raspi_sd"].state > 80) return "red"; ]]]'
+        ram:
+          - padding-bottom: 2px
+          - align-self: middle
+          - justify-self: start
+          - --text-color-sensor: black
+
+    custom_fields: 
+      sd: >
+        [[[
+          if (entity.state == "on") 
+            return `<span style="color: var(--text-color-sensor);"> ${ Math.round(entity.attributes.brightness/2.55) } </span>`;
+          else
+            return `<span style="color: var(--text-color-sensor);"> ${ entity.state } </span>`;
+        ]]]
+    tap_action:
+      action: toggle
+    double_tap_action:
+      action: more-info
+    hold_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        hide_header: true
+        card: 
+          type: custom:light-popup-card
+          entity: '[[entity]]'
+          icon: mdi:wall-sconce-flat
+          fullscreen: false
+          # actions:
+          #   - service: light.turn_on
+          #     service_data:
+          #       entity_id: light.grono_lamp_office
+          #     color: "#FDCA64"
+          #     name: Test
+
+
+
+slider_homekit:
+  default:
+    height: 30px
+  card:
+    type: custom:slider-card
+    entity: '[[entity]]'
+    height: '[[height]]'
+    radius: 5px
+    mainSliderColor: rgba(255, 255, 255, 1)
+    secondarySliderColor: 'rgba(65, 65, 65, 0)'
+    thumbWidth: '10px'
+    thumbHeight: '30px'
+    thumbColor: 'rgba(65, 65, 65,1)'
+    thumbHorizontalPadding: '4px'
+    thumbVerticalPadding: '5px'
+    style: |
+      ha-card {
+        --ha-card-background: rgba(230, 230, 230, 0.3);
+        border-radius: 5px;
+      }
+
+
+title_homekit:
+  card:
+    type: custom:button-card
+    show_label: true
+    label: '[[label]]'
+    styles:
+      card:
+        - height: 20px
+        - border-radius: "15px"
+        - background-color: "rgba(65, 65, 65,0)"
+        - box-shadow: "0px 6px 7px rgba(0,0,0,0)"
+      label:
+        - position: absolute
+        - left: 15px
+        - bottom: 0px
+        - text-decoration: underline
+        - font-weight: bold
+        - font-size: 18px
+        - line-height: 20px
+    tap_action:
+      action: call-service
+      service: homeassistant.turn_off
+      service_data:
+        entity_id: '[[entities]]'
+
+
+roller_shade_homekit:
+  card:
+    type: vertical-stack
+    cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:slider-card
+          entity: '[[entity]]'
+          rotate: "270"
+          top: "30px"
+          left: "-30px"
+          height: 40px
+          containerHeight: 100px
+          width: 100px
+          radius: 5px
+          mainSliderColor: rgba(65, 65, 65, 0.5)
+          secondarySliderColor: rgba(255, 255, 255, 1)
+          thumbWidth: '4px'
+          thumbHeight: '100px'
+          thumbColor: 'rgba(65, 65, 65, 1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '0px'
+          thumbTop: '0px'
+          thumbBorderRight: '0px'
+          thumbBorderLeft: '0px'
+          thumbBorderTop: '0px'
+          thumbBorderBotton: '0px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(230, 230, 230, 0);
+              border-radius: 5px;
+              width: 40px;
+            }
+
+        - type: vertical-stack
+          cards:
+            - type: custom:button-card
+              icon: mdi:arrow-collapse-up
+              tap_action:
+                action: call-service
+                service: cover.open_cover
+                service_data:
+                  entity_id: '[[entity]]'
+              style: |
+                ha-card {
+                  --ha-card-background: rgba(230, 230, 230, 0.5);
+                  height: 50px;
+                }
+              styles:
+                card:
+                  - height: 45px
+                icon:
+                  - color: rgba(86, 86, 86, 1)
+                    
+            - type: custom:button-card
+              icon: mdi:arrow-collapse-down
+              tap_action:
+                action: call-service
+                service: cover.close_cover
+                service_data:
+                  entity_id: '[[entity]]'
+              style: |
+                ha-card {
+                  --ha-card-background: rgba(230, 230, 230, 0.5);
+                  height: 50px;
+                }
+              styles:
+                card:
+                  - height: 45px
+                icon:
+                  - color: rgba(86, 86, 86, 1)
+  

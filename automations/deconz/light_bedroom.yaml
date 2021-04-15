@@ -1,0 +1,183 @@
+############ Symfonisk Controller ############
+- alias: Toggle Bedroom
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_controller
+      event: 1002
+  action:
+    service: light.toggle
+    entity_id: light.bedroom_spots
+
+- alias: Increase Start Controller Bedroom
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_controller
+      event: 2001
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bedroom_spots
+        field: '/state' # state for deconz light, action for deconz group
+        data: {"bri_inc":254, "transitiontime":20}
+
+- alias: Increase Stop Controller Bedroom
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_controller
+      event: 2003
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bedroom_spots
+        field: "/state"
+        data: {"bri_inc":0}
+
+- alias: Decrease Start Controller Bedroom
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_controller
+      event: 3001
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bedroom_spots
+        field: '/state' # state for deconz light, action for deconz group
+        data: {"bri_inc":-254, "transitiontime":20}
+
+- alias: Decrease Stop Controller Bedroom
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_controller
+      event: 3003
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bedroom_spots
+        field: "/state"
+        data: {"bri_inc":0}
+
+
+# # - alias: Turn On Bedroom Spots
+# #   trigger:
+# #     platform: event
+# #     event_type: deconz_event
+# #     event_data:
+# #       id: bedroom_switch_new
+# #       event: 1002
+# #   action:
+# #     service: light.turn_on
+# #     entity_id: light.bedroom_spots
+
+# - alias: Turn On Bedroom Spots Half Brightness
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_new
+#       event: 2002
+#   condition:
+#     - condition: state
+#       entity_id: light.bedroom_spots
+#       state: 'off'
+#   action:
+#     service: light.turn_on
+#     data:
+#       entity_id: light.bedroom_spots
+#       transition: 0.2
+#       brightness: 127
+
+# - alias: Turn On Bedroom Spots Full Brightness
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_new
+#       event: 1001
+#   condition:
+#     - condition: state
+#       entity_id: light.bedroom_spots
+#       state: 'off'
+#   action:
+#     service: light.turn_on
+#     data:
+#       entity_id: light.bedroom_spots
+#       transition: 0.2
+#       brightness: 254
+
+
+# # - alias: Turn Off Bedroom Spots
+# #   trigger:
+# #     platform: event
+# #     event_type: deconz_event
+# #     event_data:
+# #       id: bedroom_switch_new
+# #       event: 2002
+# #   action:
+# #     service: light.turn_off
+# #     entity_id: light.bedroom_spots
+
+# - alias: Increase Start Bedroom Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_new
+#       event: 1001
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bedroom_spots
+#         field: '/state' # state for deconz light, action for deconz group
+#         data: {"bri_inc":254, "transitiontime":20}
+
+# - alias: Increase Stop Bedroom Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_new
+#       event: 1003
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bedroom_spots
+#         field: "/state"
+#         data: {"bri_inc":0}
+
+# - alias: Decrease Start Bedroom Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_new
+#       event: 2001
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bedroom_spots
+#         field: '/state' # state for deconz light, action for deconz group
+#         data: {"bri_inc":-254, "transitiontime":20}
+
+# - alias: Decrease Stop Bedroom Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_new
+#       event: 2003
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bedroom_spots
+#         field: "/state"
+#         data: {"bri_inc":0}

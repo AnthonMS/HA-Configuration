@@ -1,0 +1,116 @@
+# - alias: Turn On Bar Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 1002
+#   action:
+#     service: light.turn_on
+#     entity_id: light.bar_spots
+
+# - alias: Turn On Bar Spots Half Brightness
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 2002
+#   condition:
+#     - condition: state
+#       entity_id: light.bar_spots
+#       state: 'off'
+#   action:
+#     service: light.turn_on
+#     data:
+#       entity_id: light.bar_spots
+#       transition: 0.2
+#       brightness: 127
+
+# - alias: Turn On Bar Spots Full Brightness
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 1001
+#   condition:
+#     - condition: state
+#       entity_id: light.bar_spots
+#       state: 'off'
+#   action:
+#     service: light.turn_on
+#     data:
+#       entity_id: light.bar_spots
+#       transition: 0.2
+#       brightness: 254
+
+
+# - alias: Turn Off Bar Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 2002
+#   action:
+#     service: light.turn_off
+#     entity_id: light.bar_spots
+
+
+# - alias: Increase Start Bar Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 1001
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bar_spots
+#         field: '/state' # state for deconz light, action for deconz group
+#         data: {"bri_inc":254, "transitiontime":20}
+
+# - alias: Increase Stop Bar Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 1003
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bar_spots
+#         field: "/state"
+#         data: {"bri_inc":0}
+
+
+# - alias: Decrease Start Bar Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 2001
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bar_spots
+#         field: '/state' # state for deconz light, action for deconz group
+#         data: {"bri_inc":-254, "transitiontime":20}
+
+# - alias: Decrease Stop Bar Spots
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bar_spots_switch
+#       event: 2003
+#   action:
+#     - service: deconz.configure
+#       data:
+#         entity: light.bar_spots
+#         field: "/state"
+#         data: {"bri_inc":0}

@@ -1,0 +1,20 @@
+- alias: set_computer_volume
+  trigger:
+    - platform: state
+      entity_id: input_number.computer_volume
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/volume/set"
+        payload_template: "{{ states.input_number.computer_volume.state }}"
+
+- alias: get_computer_volume
+  trigger:
+    - platform: state
+      entity_id: sensor.desktop_ct2d9sp_media_volume
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.computer_volume
+        value: >-
+          {{ states.sensor.desktop_ct2d9sp_media_volume.state | float }}

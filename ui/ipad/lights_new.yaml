@@ -1,0 +1,99 @@
+type: vertical-stack
+cards:
+
+  - type: custom:decluttering-card
+    template: title_homekit
+    variables:
+      - label: Lights
+      - entities:
+          - light.kitchen_spots
+          - light.bar_spots
+          - light.sofa_spots
+          - light.dinner_table_spots
+          - light.entrance_spots
+          - light.speakers
+          - light.stairs_spots
+
+########### SPACER ###########
+  - type: custom:button-card
+    styles:
+      card:
+        - width: 0px
+        - height: 10px
+          
+          
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 15px
+            - height: 0px
+            - background-color: rgba(0, 0, 0, 0)
+
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Kitchen
+          # - icon: mdi:desk-lamp
+          - entity: light.kitchen_spots
+          - card_height: 100px
+          - card_width: 80px
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Bar
+          - entity: light.bar_spots
+          - card_height: 100px
+          - card_width: 80px
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Sofa
+          - entity: light.sofa_spots
+          - card_height: 100px
+          - card_width: 80px
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Dinner Table
+          - entity: light.dinner_table_spots
+          - card_height: 100px
+          - card_width: 80px
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Speakers
+          - icon: mdi:lamp
+          - entity: light.speakers
+          - card_height: 100px
+          - card_width: 80px
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Entrance
+          - entity: light.entrance_spots
+          - card_height: 100px
+          - card_width: 80px
+
+      - type: custom:decluttering-card
+        template: vertical_slider
+        variables:
+          - name: Stairs
+          - entity: light.stairs_spots
+          - card_height: 100px
+          - card_width: 80px
+
+          
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 15px
+            - height: 0px
+            - background-color: rgba(0, 0, 0, 0)

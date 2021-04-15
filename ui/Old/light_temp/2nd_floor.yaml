@@ -1,0 +1,416 @@
+type: vertical-stack
+cards:
+
+################  Title  ################
+  - type: custom:button-card
+    show_label: true
+    label: Second Floor
+    styles:
+      card:
+        - height: 20px
+        - border-radius: "15px"
+        - background-color: "rgba(65, 65, 65,0)"
+        - box-shadow: "0px 6px 7px rgba(0,0,0,0)"
+      label:
+        - position: absolute
+        - left: 15px
+        - bottom: 0px
+        - text-decoration: underline
+        - font-weight: bold
+        - font-size: 18px
+        - line-height: 20px
+    tap_action:
+      action: call-service
+      service: light.turn_off
+      service_data:
+        entity_id:
+          - light.bedroom
+          - light.bed_leds
+          - light.beam_leds
+          - light.nightlight_left
+          - light.nightlight_right
+          - light.office
+
+
+###########  5TH ROW - Lights  ###########
+  - type: horizontal-stack
+    cards:
+###########  LEFT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+        
+###########  Light Bedroom  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.bedroom
+          label: Bedroom
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Bedroom  ###########
+        - type: custom:slider-card
+          entity: light.bedroom
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Office  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.office
+          label: Office
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Office  ###########
+        - type: custom:slider-card
+          entity: light.office
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+
+###########  RIGHT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+
+
+################  6TH ROW - Lights  ################
+  - type: horizontal-stack
+    cards:
+###########  LEFT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+        
+###########  Light Bed LEDs  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.bed_leds
+          label: Bed LEDs
+          icon: bha:led-strip
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Bed LEDs  ###########
+        - type: custom:slider-card
+          entity: light.bed_leds
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Beam LEDs  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.beam_leds
+          label: Beam LEDs
+          icon: bha:led-strip
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Beam LEDs  ###########
+        - type: custom:slider-card
+          entity: light.beam_leds
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Nightlight Left  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.nightlight_left
+          label: Nightlight Left
+          icon: mdi:lamp
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Nightlight Left  ###########
+        - type: custom:slider-card
+          entity: light.nightlight_left
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Nightlight Right  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.nightlight_right
+          label: Nightlight Right
+          icon: mdi:lamp
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Nightlight Right  ###########
+        - type: custom:slider-card
+          entity: light.nightlight_right
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+
+###########  RIGHT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px

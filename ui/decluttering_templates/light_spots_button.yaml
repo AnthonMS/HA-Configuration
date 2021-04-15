@@ -1,0 +1,43 @@
+light_spots_button:
+  default: 
+    icon: mdi:wall-sconce-flat
+    label: 'NoLabel'
+  card:
+    type: custom:button-card
+    entity: '[[entity]]'
+    label: '[[label]]'
+    icon: '[[icon]]'
+    show_state: false
+    show_name: false
+    show_label: true
+    styles:
+      card:
+        - height: 100px
+        - border-radius: 15px
+        - background-color: >
+            [[[
+              if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+              else return "rgba(255, 255, 255,0.3)";
+            ]]]
+      custom_fields:
+        notification:
+          - background-color: "white"
+          - border-radius: 50%
+          - position: absolute
+          - left: 60%
+          - top: 10%
+          - height: 20px
+          - width: 20px
+          - font-size: 8px
+          - color: "black"
+          - font-weight: bold
+          - line-height: 20px
+    custom_fields:
+      notification: >
+        [[[ 
+          if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+        ]]]
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info

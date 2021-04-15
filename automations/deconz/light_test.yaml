@@ -1,0 +1,151 @@
+# - alias: DeConz Light Handler
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: office_test_switch
+#   action:
+#     - choose:
+
+#       - alias: "If on/off event, turn on/off light"
+#         conditions:
+#           - condition: template
+#             value_template: "{{ trigger.event.data.event == 1002 or trigger.event.data.event == 2002 }}"
+#         sequence:
+#           - service: >
+#               {% if trigger.event.data.event == 1002 %}
+#                 light.turn_on
+#               {% elif trigger.event.data.event == 2002 %}
+#                 light.turn_off
+#               {% endif %}
+#             data:
+#               entity_id: light.stairs_spots
+
+#       - alias: "If increase/decrease event, increase/decrease light"
+#         conditions:
+#           - condition: template
+#             value_template: "{{ trigger.event.data.event == 1001 or trigger.event.data.event == 1003 or trigger.event.data.event == 2001 or trigger.event.data.event == 2003 }}"
+#         sequence:
+#           - service: deconz.configure
+#             data: 
+#               entity: light.stairs_spots
+#               field: '/state'
+#               data: >
+#                 {% if trigger.event.data.event == 1001 %}
+#                   {"bri_inc":254, "transitiontime":20}
+#                 {% elif trigger.event.data.event == 1003 %}
+#                   {"bri_inc":0}
+#                 {% elif trigger.event.data.event == 2001 %}
+#                   {"bri_inc":-254, "transitiontime":20}
+#                 {% elif trigger.event.data.event == 2003 %}
+#                   {"bri_inc":0}
+#                 {% endif %}
+
+
+    # - service_template: >
+    #     {% if trigger.event.data.event == 1002 %}
+    #       light.turn_on
+    #     {% elif trigger.event.data.event == 1001 %}
+    #       deconz.configure
+    #     {% elif trigger.event.data.event == 1003 %}
+    #       deconz.configure
+    #     {% elif trigger.event.data.event == 2002 %}
+    #       light.turn_off
+    #     {% elif trigger.event.data.event == 2001 %}
+    #       deconz.configure
+    #     {% elif trigger.event.data.event == 2003 %}
+    #       deconz.configure
+    #     {% endif %}
+    #   data_template: >
+    #     {% if trigger.event.data.event == 1002 %}
+    #       {'entity_id':'light.stairs_spots'}
+    #     {% elif trigger.event.data.event == 2002 %}
+    #       {'entity_id':'light.stairs_spots'}
+
+
+# - alias: DeConz Increase/Decrease Light
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data: 
+#       id: office_test_switch
+#   action:
+#     - service: deconz.configure
+#       data_template: 
+#         entity: light.bedroom_spots
+#         field: '/state'
+#         data: >
+#           {% if trigger.event.data.event == 1001 %}
+#             {"bri_inc":254, "transitiontime":20}
+#           {% elif trigger.event.data.event == 1003 %}
+#             {"bri_inc":0}
+#           {% elif trigger.event.data.event == 2001 %}
+#             {"bri_inc":-254, "transitiontime":20}
+#           {% elif trigger.event.data.event == 2003 %}
+#             {"bri_inc":0}
+#           {% endif %}
+
+  # data_template: >
+  #   entity: light.bedroom_spots
+  #   field: '/state'
+  #   {% if trigger.event.data.event == 1001 %}
+  #     data: {"bri_inc":254, "transitiontime":20}
+  #   {% elif trigger.event.data.event == 1003 %}
+  #     data: {"bri_inc":0}
+  #   {% elif trigger.event.data.event == 2001 %}
+  #     data: {"bri_inc":-254, "transitiontime":20}
+  #   {% elif trigger.event.data.event == 2003 %}
+  #     data: {"bri_inc":0}
+  #   {% endif %}
+
+
+# - alias: DeConz Handle Office Switch
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: office_test_switch
+#   action:
+#     - service_template: >
+#         {% if trigger.event.data.event == 1002 %}
+#           light.turn_on
+#         {% elif trigger.event.data.event == 2002 %}
+#           light.turn_off
+#         {% endif %}
+#       entity_id: light.grono_lamp_office
+#     - service: input_text.set_value
+#       data_template:
+#         entity_id: input_text.entrance_snapshot_anthon
+#         value: >
+#           Trigger2: {{ trigger.event.data.event }}
+
+
+
+# - alias: DeConz Handle Office Switch
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: office_test_switch
+# #      event: 1002
+#   action:
+#   # If 1002 -> Turn On
+#   # If 2002 -> Turn Off
+#   # If 1001 -> Start Increase
+#   # If 1003 -> Stop Increase (Same as Stop Decrease)
+#   # If 2001 -> Start Decrease
+#   # If 2003 -> Stop Decrease (Same as Stop Increase)
+#     - service_template: >
+#         {% if trigger.event.data.event == 1002 %}
+#           light.turn_on
+#         {% elif trigger.event.data.event == 2002 %}
+#           light.turn_off
+#         {% else %}
+#           light.toggle
+#         {% endif %}
+#       entity_id: light.grono_lamp_office
+#     - service: input_text.set_value
+#       data_template:
+#         entity_id: input_text.entrance_snapshot_anthon
+#         value: >
+#           Trigger2: {{ trigger.event.data.event }}

@@ -1,0 +1,49 @@
+start_morning_alarm:
+  sequence:
+    - service: light.turn_on
+      data:
+        # entity_id: light.bedroom
+        entity_id: light.basement_room
+        brightness: 1
+    - delay: '00:00:05'
+    - service: light.turn_on
+      data:
+        # entity_id: light.bedroom
+        entity_id: light.basement_room
+        brightness: 255
+        transition: 300 # 300 = 5 Min.
+    # - service: media_player.volume_set
+    #   entity_id: media_player.bedroom_speaker
+    #   data:
+    #     volume_level: '0.4'
+    # - service: media_extractor.play_media
+    #   entity_id: media_player.bedroom_speaker
+    #   data_template:
+    #     # entity_id: media_player.bedroom_speaker
+    #     media_content_type: 'music'
+    #     media_content_id: >-
+    #       {%- if states.input_select.radio_channel.state == 'DR P1' -%}
+    #       http://live-icy.gss.dr.dk/A/A03H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR P2' -%}
+    #       http://live-icy.gss.dr.dk/A/A04H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR P3' -%}
+    #       http://live-icy.gss.dr.dk/A/A05H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR P4 Sjælland' -%}
+    #       http://live-icy.gss.dr.dk/A/A11H.mp3.m3u
+    #       {%- elif states.input_select.radio_channel.state == 'DR P5' -%}
+    #       http://live-icy.gss.dr.dk/A/A25H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR P6 BEAT' -%}
+    #       http://live-icy.gss.dr.dk/A/A29H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR P7 MIX' -%}
+    #       http://live-icy.gss.dr.dk/A/A21H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR P8 JAZZ' -%}
+    #       http://live-icy.gss.dr.dk/A/A22H.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'DR Nyheder' -%}
+    #       http://live-icy.gss.dr.dk/A/A02L.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'Nova FM' -%}
+    #       http://live-bauerdk.sharp-stream.com/nova128.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'Pop FM' -%}
+    #       http://live-bauerdk.sharp-stream.com/popfm128.mp3
+    #       {%- elif states.input_select.radio_channel.state == 'The Voice' -%}
+    #       http://live-bauerdk.sharp-stream.com/voice128.mp3
+    #       {% endif %}

@@ -1,0 +1,452 @@
+- id: '1615332131496'
+  alias: Turn On Sofa And Dinner Table At Half Brightness
+  description: ''
+  use_blueprint:
+    path: double_switch_off_light_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light1: light.sofa_spots
+      light2: light.dinner_table_spots
+- id: '1615332193843'
+  alias: Turn On Sofa And Dinner Table At Full Brightness
+  description: ''
+  use_blueprint:
+    path: double_switch_hold_light_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light1: light.sofa_spots
+      light2: light.dinner_table_spots
+- id: '1615333518863'
+  alias: Bar Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: bar_spots_switch
+      light: light.bar_spots
+- id: '1615333538475'
+  alias: Bar Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: bar_spots_switch
+      light: light.bar_spots
+- id: '1615333701757'
+  alias: Bedroom Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: bedroom_switch_new
+      light: light.bedroom_spots
+- id: '1615333715063'
+  alias: Bedroom Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: bedroom_switch_new
+      light: light.bedroom_spots
+- id: '1615333873752'
+  alias: Entrance Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: entrance_spots_switch
+      light: light.entrance_spots
+- id: '1615333888254'
+  alias: Entrance Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: entrance_spots_switch
+      light: light.entrance_spots
+- id: '1615334064755'
+  alias: Kitchen Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: kitchen_switch
+      light: light.kitchen_spots
+- id: '1615334077909'
+  alias: Kitchen Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: kitchen_switch
+      light: light.kitchen_spots
+- id: '1615334598468'
+  alias: Dinner Table Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.dinner_table_spots
+- id: '1615334613491'
+  alias: Dinner Table Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.dinner_table_spots
+- id: '1615334836432'
+  alias: Sofa Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch2_hold_light_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.sofa_spots
+- id: '1615334951164'
+  alias: Sofa Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch2_off_light_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.sofa_spots
+- id: '1615477934574'
+  alias: Bedroom Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: bedroom_switch_new
+      light: light.bedroom_spots
+- id: '1615477952260'
+  alias: Bedroom Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: bedroom_switch_new
+      light: light.bedroom_spots
+- id: '1615478964423'
+  alias: Entrance Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: entrance_spots_switch
+      light: light.entrance_spots
+- id: '1615478983211'
+  alias: Entrance Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: entrance_spots_switch
+      light: light.entrance_spots
+- id: '1615479050432'
+  alias: Kitchen Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: kitchen_switch
+      light: light.kitchen_spots
+- id: '1615479064779'
+  alias: Kitchen Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: kitchen_switch
+      light: light.kitchen_spots
+- id: '1615479174904'
+  alias: Bar Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: bar_spots_switch
+      light: light.bar_spots
+- id: '1615479188927'
+  alias: Bar Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: bar_spots_switch
+      light: light.bar_spots
+- id: '1615479696396'
+  alias: Dinner Table Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.dinner_table_spots
+- id: '1615479713980'
+  alias: Dinner Table Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.dinner_table_spots
+- id: '1615479732070'
+  alias: Sofa Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light2_on_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.sofa_spots
+- id: '1615479750422'
+  alias: Sofa Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light2_increase_decrease.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.sofa_spots
+- id: '1615480694084'
+  alias: Sofa And Dinner Table On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/double_on_off.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.sofa_spots
+      light2: light.dinner_table_spots
+- id: '1615480713754'
+  alias: Sofa And Dinner Table Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/double_increase_decrease.yaml
+    input:
+      switch_id: friends_of_hue_switch
+      light: light.sofa_spots
+      light2: light.dinner_table_spots
+- id: '1615483072039'
+  alias: Office Desk Lamp On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: office_test_switch
+      light: light.grono_lamp_office
+- id: '1615905952633'
+  alias: Bar Spots On/Off New
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: bar_spots_switch_new
+      light: light.bar_spots
+- id: '1615905968105'
+  alias: Bar Spots Increase/Decrease New
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: bar_spots_switch_new
+      light: light.bar_spots
+- id: '1615906003532'
+  alias: Entrance Spots On/Off New
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: entrance_spots_switch_new
+      light: light.entrance_spots
+- id: '1615906022350'
+  alias: Entrance Spots Increase/Decrease New
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: entrance_spots_switch_new
+      light: light.entrance_spots
+- id: '1615906078849'
+  alias: Entrance Spots Turn On At Full Brightness New
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: entrance_spots_switch_new
+      light: light.entrance_spots
+- id: '1615906098243'
+  alias: Entrance Spots Turn On At Half Brightness New
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: entrance_spots_switch_new
+      light: light.entrance_spots
+- id: '1615906168089'
+  alias: Bar Spots Turn On At Full Brightness New
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: bar_spots_switch_new
+      light: light.bar_spots
+- id: '1615906183494'
+  alias: Bar Spots Turn On At Half Brightness New
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: bar_spots_switch_new
+      light: light.bar_spots
+- id: '1616328344339'
+  alias: Front Door Spots On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: front_door_switch
+      light: light.front_door_spots
+- id: '1616328361986'
+  alias: Front Door Spots Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: front_door_switch
+      light: light.front_door_spots
+- id: '1616328411428'
+  alias: Front Door Spots Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: front_door_switch
+      light: light.front_door_spots
+- id: '1616328429796'
+  alias: Front Door Spots Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: front_door_switch
+      light: light.front_door_spots
+- id: '1618250222234'
+  alias: Stairs Spots Bottom On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: stairs_spots_switch_bottom
+      light: light.stairs_spots
+- id: '1618250248353'
+  alias: Stairs Spots Bottom Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: stairs_spots_switch_bottom
+      light: light.stairs_spots
+- id: '1618250271544'
+  alias: Stairs Spots Bottom Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: stairs_spots_switch_bottom
+      light: light.stairs_spots
+- id: '1618250292442'
+  alias: Stairs Spots Bottom Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: stairs_spots_switch_bottom
+      light: light.stairs_spots
+- id: '1618250380810'
+  alias: Stairs Spots Top On/Off
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_on_off.yaml
+    input:
+      switch_id: stairs_spots_switch_top
+      light: light.stairs_spots
+- id: '1618250396310'
+  alias: Stairs Spots Top Increase/Decrease
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_increase_decrease.yaml
+    input:
+      switch_id: stairs_spots_switch_top
+      light: light.stairs_spots
+- id: '1618250414319'
+  alias: Stairs Spots Top Turn On At Half Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_off_light_off.yaml
+    input:
+      switch_id: stairs_spots_switch_top
+      light: light.stairs_spots
+- id: '1618250431749'
+  alias: Stairs Spots Top Turn On At Full Brightness
+  description: ''
+  use_blueprint:
+    path: single_switch_hold_light_off.yaml
+    input:
+      switch_id: stairs_spots_switch_top
+      light: light.stairs_spots
+- id: '1618335112346'
+  alias: Bar Spots Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: bar_spots_switch_new
+      light: light.bar_spots
+- id: '1618335131586'
+  alias: Bedroom Spots Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: bedroom_switch_new
+      light: light.bedroom_spots
+- id: '1618335149494'
+  alias: Entrance Spots Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: entrance_spots_switch_new
+      light: light.entrance_spots
+- id: '1618335165111'
+  alias: Front Door Spots Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: front_door_switch
+      light: light.front_door_spots
+- id: '1618335182061'
+  alias: Kitchen Spots Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: kitchen_switch
+      light: light.kitchen_spots
+- id: '1618335201105'
+  alias: Stairs Spots Bottom Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: stairs_spots_switch_bottom
+      light: light.stairs_spots
+- id: '1618335219837'
+  alias: Stairs Spots Top Light Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/light_handler.yaml
+    input:
+      switch_id: stairs_spots_switch_top
+      light: light.stairs_spots

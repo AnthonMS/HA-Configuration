@@ -1,0 +1,179 @@
+type: vertical-stack
+cards:
+
+################  TOP MARGIN  ################
+  - type: custom:button-card
+    styles:
+      card:
+        - width: 0px
+        - height: 10px
+
+
+
+
+  - type: horizontal-stack
+    cards:
+###########  LEFT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 0px
+
+      - type: custom:button-card
+        entity: input_boolean.anthon_alarm
+        icon: mdi:alarm
+        show_state: false
+        show_name: false
+        show_label: false
+        styles:
+          card:
+            - height: 75px
+            - background-color: >
+                [[[
+                  if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                  else return "rgba(255, 255, 255,0.3)";
+                ]]]
+          icon:
+            - height: 25px
+            - width: 25px
+        tap_action:
+          action: toggle
+
+###########  RIGHT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 0px
+
+  - type: horizontal-stack
+    cards:
+###########  LEFT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 0px
+
+      - type: custom:button-card
+        label: '04:20'
+        show_icon: false
+        show_state: false
+        show_name: false
+        show_label: true
+        styles:
+          card:
+            - height: 30px
+        tap_action:
+          action: call-service
+          service: input_datetime.set_datetime
+          service_data:
+            entity_id: input_datetime.anthon_alarm
+            time: '04:20:00'
+
+      - type: custom:button-card
+        label: '08:00'
+        show_icon: false
+        show_state: false
+        show_name: false
+        show_label: true
+        styles:
+          card:
+            - height: 30px
+        tap_action:
+          action: call-service
+          service: input_datetime.set_datetime
+          service_data:
+            entity_id: input_datetime.anthon_alarm
+            time: '08:00:00'
+
+      - type: custom:button-card
+        label: '11:30'
+        show_icon: false
+        show_state: false
+        show_name: false
+        show_label: true
+        styles:
+          card:
+            - height: 30px
+        tap_action:
+          action: call-service
+          service: input_datetime.set_datetime
+          service_data:
+            entity_id: input_datetime.anthon_alarm
+            time: '11:30:00'
+
+      - type: custom:button-card
+        label: '12:30'
+        show_icon: false
+        show_state: false
+        show_name: false
+        show_label: true
+        styles:
+          card:
+            - height: 30px
+        tap_action:
+          action: call-service
+          service: input_datetime.set_datetime
+          service_data:
+            entity_id: input_datetime.anthon_alarm
+            time: '12:30:00'
+
+###########  RIGHT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 0px
+
+
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 0px
+
+      - type: custom:time-picker-card
+        entity: input_datetime.anthon_alarm
+        name: 'Alarm kl.:'
+        hour_mode: 24
+        hour_step: 1
+        minute_step: 5
+        hide:
+          name: true
+
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+
+
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 0px
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_select.radio_channel
+
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+
+
+
+################  BOTTOM MARGIN  ################
+  - type: custom:button-card
+    styles:
+      card:
+        - width: 0px
+        - height: 10px

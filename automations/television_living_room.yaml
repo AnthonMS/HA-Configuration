@@ -1,0 +1,20 @@
+# - alias: set_computer_volume
+#   trigger:
+#     - platform: state
+#       entity_id: input_number.android_tv_1_volume
+#   action:
+#     - service: media_player.volume_set
+#       data:
+#         entity_id: media_player.android_tv_1
+#         volume_level: "{{ states.input_number.android_tv_1_volume.state }}"
+
+# - alias: get_computer_volume
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.android_tv_1_volume
+#   action:
+#     - service: input_number.set_value
+#       data_template:
+#         entity_id: input_number.android_tv_1_volume
+#         value: >-
+#           {{ states.sensor.android_tv_1_volume.state | float }}

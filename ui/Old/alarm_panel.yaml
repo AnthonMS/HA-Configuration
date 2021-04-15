@@ -1,0 +1,32 @@
+title: Security Panel
+icon: mdi:alarm-light-outline
+panel: false
+
+
+cards:
+  - type: alarm-panel
+    name: House Alarm
+    entity: alarm_control_panel.home_alarm
+    states:
+      - arm_away
+
+  - type: picture-glance
+    title: Front Door
+    camera_image: camera.front_door_cam
+    camera_view: live
+    entities:
+      - entity: binary_sensor.front_door
+        tap_action: 
+          action: more-info
+      - entity: camera.front_door_cam_motion_snapshot
+        icon: mdi:camera-outline
+        tap_action:
+          action: call-service
+          service: script.front_door_snapshot
+      - entity: lock.front_door
+        tap_action:
+          action: more-info
+
+  # - type: picture-entity
+  #   entity: camera.front_door_cam
+  #   camera_view: live

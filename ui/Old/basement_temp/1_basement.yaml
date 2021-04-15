@@ -1,0 +1,488 @@
+type: vertical-stack
+cards:
+
+################  Title  ################
+  - type: custom:button-card
+    show_label: true
+    label: Basement
+    styles:
+      card:
+        - height: 20px
+        - border-radius: "15px"
+        - background-color: "rgba(65, 65, 65,0)"
+        - box-shadow: "0px 6px 7px rgba(0,0,0,0)"
+      label:
+        - position: absolute
+        - left: 15px
+        - bottom: 0px
+        - text-decoration: underline
+        - font-weight: bold
+        - font-size: 18px
+        - line-height: 20px
+    tap_action:
+      action: call-service
+      service: light.turn_off
+      service_data:
+        entity_id:
+          - light.basement_room
+          - light.basement_entrance
+          - light.basement_workshop
+          - light.basement_hall
+          - light.basement_stairs
+          - light.basement_stair_leds
+          - light.basement_laundry_room
+
+
+################  1ST ROW - Lights  ################
+  - type: horizontal-stack
+    cards:
+###########  LEFT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+        
+###########  Light Basement Room  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_room
+          label: Room
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Basement Entrance  ###########
+        - type: custom:slider-card
+          entity: light.basement_room
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Basement Entrance  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_entrance
+          label: Entrance
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Basement Entrance  ###########
+        - type: custom:slider-card
+          entity: light.basement_entrance
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Basement Hall  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_hall
+          label: Basement Hall
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Basement Hall  ###########
+        - type: custom:slider-card
+          entity: light.basement_hall
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+
+###########  RIGHT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+
+
+
+
+
+################  8TH ROW - Lights  ################
+  - type: horizontal-stack
+    cards:
+###########  LEFT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+        
+###########  Light Basement Stairs  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_stairs
+          label: Basement Stairs
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Basement Stairs  ###########
+        - type: custom:slider-card
+          entity: light.basement_stairs
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Basement Stair LEDs  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_stair_leds
+          label: Basement Stair LEDs
+          icon: bha:stairs
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Basement Stair LEDs  ###########
+        - type: custom:slider-card
+          entity: light.basement_stair_leds
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Laundry Room  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_laundry_room
+          label: Laundry Room
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Laundry Room  ###########
+        - type: custom:slider-card
+          entity: light.basement_laundry_room
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+        
+###########  Light Workshop  ###########
+      - type: vertical-stack
+        cards:
+        - type: custom:button-card
+          entity: light.basement_workshop
+          label: Workshop
+          icon: mdi:wall-sconce-flat
+          show_state: false
+          show_name: false
+          show_label: true
+          styles:
+            card:
+              - height: 100px
+              - border-radius: 15px
+              - background-color: >
+                  [[[
+                    if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                    else return "rgba(255, 255, 255,0.3)";
+                  ]]]
+            custom_fields:
+              notification:
+                - background-color: "white"
+                - border-radius: 50%
+                - position: absolute
+                - left: 60%
+                - top: 10%
+                - height: 20px
+                - width: 20px
+                - font-size: 8px
+                - color: "black"
+                - font-weight: bold
+                - line-height: 20px
+          custom_fields:
+            notification: >
+              [[[ 
+                if (entity.state == "on") return Math.round(entity.attributes.brightness/2.55);
+              ]]]
+          tap_action:
+            action: toggle
+          hold_action:
+            action: more-info
+      
+###########  Slider Workshop  ###########
+        - type: custom:slider-card
+          entity: light.basement_workshop
+          height: '30px'
+          mainSliderColor: 'rgba(255, 255, 255,0.3)'
+          secondarySliderColor: 'rgba(65, 65, 65, 0)'
+          thumbWidth: '10px'
+          thumbHeight: '30px'
+          thumbColor: 'rgba(65, 65, 65,1)'
+          thumbHorizontalPadding: '4px'
+          thumbVerticalPadding: '5px'
+          style: |
+            ha-card {
+              --ha-card-background: rgba(65, 65, 65, 0.5);
+            }
+
+###########  RIGHT MARGIN  ###########
+      - type: custom:button-card
+        styles:
+          card:
+            - width: 0px
+            - height: 100px
+
+
+
+
+################  BOTTOM MARGIN  ################
+  - type: custom:button-card
+    styles:
+      card:
+        - width: 0px
+        - height: 30px

@@ -1,0 +1,11 @@
+entrance_snapshot_anthon:
+  name: Entrance Snapshot Anthon
+  initial: Nothing
+
+entrance_snapshot_tv:
+  name: Entrance Snapshot TV
+  initial: Nothing
+
+speaker_tts:
+  name: Speaker TTS
+  initial: ''

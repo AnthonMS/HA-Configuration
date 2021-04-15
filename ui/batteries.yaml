@@ -1,0 +1,261 @@
+title: Batteries
+icon: mdi:battery-70
+panel: false
+
+
+cards:
+  # - type: custom:slider-card
+  #   entity: light.grono_lamp_office
+  #   height: 100px
+  #   width: 30px
+  #   radius: 5px
+  #   mainSliderColor: rgba(255, 255, 255, 1)
+  #   secondarySliderColor: 'rgba(65, 65, 65, 0)'
+  #   thumbWidth: '10px'
+  #   thumbHeight: '30px'
+  #   thumbColor: 'rgba(65, 65, 65,1)'
+  #   thumbHorizontalPadding: '4px'
+  #   thumbVerticalPadding: '5px'
+  #   style: |
+  #     ha-card {
+  #       --ha-card-background: rgba(230, 230, 230, 0.3);
+  #       border-radius: 5px;
+  #     }
+
+  - type: entities
+    title: Test
+    entities:
+      - light.entrance_spots
+      - light.dinner_table_spots
+      - cover.bedroom_blind
+
+  # - type: custom:button-card
+  #   entity: cover.bedroom_blind
+  #   label: Open
+  #   # icon: '[[icon]]'
+  #   show_state: false
+  #   show_name: false
+  #   show_label: true
+  #   styles:
+  #     card:
+  #       - height: 100px
+  #       - border-radius: 15px
+  #       - background-color: green
+  #   tap_action:
+  #     action: call-service
+  #     service: cover.open_cover
+  #     service_data:
+  #       entity_id: cover.bedroom_blind
+  #   hold_action:
+  #     action: more-info
+
+  # - type: custom:button-card
+  #   entity: cover.bedroom_blind
+  #   label: Close
+  #   # icon: '[[icon]]'
+  #   show_state: false
+  #   show_name: false
+  #   show_label: true
+  #   styles:
+  #     card:
+  #       - height: 100px
+  #       - border-radius: 15px
+  #       - background-color: red
+  #   tap_action:
+  #     action: call-service
+  #     service: cover.close_cover
+  #     service_data:
+  #       entity_id: cover.bedroom_blind
+  #   hold_action:
+  #     action: more-info
+
+  # - type: entities
+  #   title: Test
+  #   card_mod:
+  #     style: |
+  #       ha-card {
+  #         --ha-card-background: teal;
+  #         color: red;
+  #       }
+  #   entities:
+  #     - light.entrance_spots
+  #     - light.dinner_table_spots
+
+
+  - type: custom:bar-card
+    title: Important
+    icon: mdi:battery
+    height: 30px
+    color: grey
+    style: |
+      ha-card {
+        border-radius: 15px;
+      }
+    entities:
+      - sensor.oneplus_a3003_battery_level
+      - sensor.dagmars_ipad_battery_level
+    severity:
+      - color: Red
+        icon: mdi:battery-alert
+        from: 0
+        to: 10
+      - icon: mdi:battery-20
+        from: 10
+        to: 20
+      - icon: mdi:battery-30
+        from: 20
+        to: 30
+      - icon: mdi:battery-40
+        from: 30
+        to: 40
+      - icon: mdi:battery-50
+        from: 40
+        to: 50
+      - icon: mdi:battery-60
+        from: 50
+        to: 60
+      - icon: mdi:battery-70
+        from: 60
+        to: 70
+      - icon: mdi:battery-80
+        from: 70
+        to: 80
+      - icon: mdi:battery-90
+        from: 80
+        to: 90
+
+  - type: custom:bar-card
+    title: 1st Floor
+    icon: mdi:battery
+    height: 30px
+    color: grey
+    style: |
+      ha-card {
+        border-radius: 15px;
+      }
+    entities:
+      - sensor.door_bell_battery_level
+      - sensor.entrance_spots_switch_battery_level
+      - sensor.kitchen_switch_battery_level
+      - sensor.bar_spots_switch_battery_level
+      - sensor.front_door_battery_level
+#      - sensor.living_room_switch_1_battery_level
+#      - sensor.living_room_switch_2_battery_level
+    severity:
+      - color: Red
+        icon: mdi:battery-alert
+        from: 0
+        to: 10
+      - icon: mdi:battery-20
+        from: 10
+        to: 20
+      - icon: mdi:battery-30
+        from: 20
+        to: 30
+      - icon: mdi:battery-40
+        from: 30
+        to: 40
+      - icon: mdi:battery-50
+        from: 40
+        to: 50
+      - icon: mdi:battery-60
+        from: 50
+        to: 60
+      - icon: mdi:battery-70
+        from: 60
+        to: 70
+      - icon: mdi:battery-80
+        from: 70
+        to: 80
+      - icon: mdi:battery-90
+        from: 80
+        to: 90
+
+  - type: custom:bar-card
+    title: 2nd Floor
+    icon: mdi:battery
+    height: 30px
+    color: grey
+    style: |
+      ha-card {
+        border-radius: 15px;
+      }
+    entities:
+      - sensor.bedroom_switch_new_battery_level
+    severity:
+      - color: Red
+        icon: mdi:battery-alert
+        from: 0
+        to: 10
+      - icon: mdi:battery-20
+        from: 10
+        to: 20
+      - icon: mdi:battery-30
+        from: 20
+        to: 30
+      - icon: mdi:battery-40
+        from: 30
+        to: 40
+      - icon: mdi:battery-50
+        from: 40
+        to: 50
+      - icon: mdi:battery-60
+        from: 50
+        to: 60
+      - icon: mdi:battery-70
+        from: 60
+        to: 70
+      - icon: mdi:battery-80
+        from: 70
+        to: 80
+      - icon: mdi:battery-90
+        from: 80
+        to: 90
+
+  - type: custom:bar-card
+    title: Basement
+    icon: mdi:battery
+    height: 30px
+    color: grey
+    style: |
+      ha-card {
+        border-radius: 15px;
+      }
+    entities: 
+      - sensor.basement_entrance_and_hall_battery_level
+#      - sensor.basement_entrance_switch_battery_level
+#      - sensor.basement_room_controller_battery_level
+      - sensor.basement_room_switch_battery_level
+      - sensor.basement_hall_switch_battery_level
+      - sensor.basement_stairs_door_battery_level
+      - sensor.basement_entrance_motion_battery_level
+    severity:
+      - color: Red
+        icon: mdi:battery-alert
+        from: 0
+        to: 10
+      - icon: mdi:battery-20
+        from: 10
+        to: 20
+      - icon: mdi:battery-30
+        from: 20
+        to: 30
+      - icon: mdi:battery-40
+        from: 30
+        to: 40
+      - icon: mdi:battery-50
+        from: 40
+        to: 50
+      - icon: mdi:battery-60
+        from: 50
+        to: 60
+      - icon: mdi:battery-70
+        from: 60
+        to: 70
+      - icon: mdi:battery-80
+        from: 70
+        to: 80
+      - icon: mdi:battery-90
+        from: 80
+        to: 90
+  

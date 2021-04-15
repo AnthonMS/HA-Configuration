@@ -1,0 +1,38 @@
+blueprint:
+  name: Double On/Off
+  description: Turn two lights On or Off with a zigbee switch in DeConz. Use for example a FoH Double switch both sides
+  domain: automation
+  input:
+    switch_id:
+      name: DeConz Event Switch ID
+      selector:
+        text:
+    light:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+    light2:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data: 
+    id: !input switch_id
+action:
+  - service_template: >
+      {% if trigger.event.data.event == 5002 %}
+        light.turn_on
+      {% elif trigger.event.data.event == 6002 %}
+        light.turn_off
+      {% endif %}
+    data:
+      entity_id: 
+        - !input light
+        - !input light2
+
+

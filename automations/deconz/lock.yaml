@@ -1,0 +1,8 @@
+- alias: Front Door Unlocked
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    from: 'locked'
+    to: 'unlocked'
+  action:
+    - service: script.notify_anthon_door_unlocked

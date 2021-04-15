@@ -1,0 +1,42 @@
+# - alias: Ipad Battery Below 20
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sensor.dagmars_ipad_battery_level
+#     below: 20
+#   action:
+#     - service: notify.mobile_app_anthon_oneplus_3
+#       data:
+#         title: 'Ipad Batteri'
+#         message: 'Ipad Batteri = {{ states("sensor.dagmars_ipad_battery_level") }}'
+#         data:
+#           ttl: 0
+#           priority: high
+#           channel: alarm_stream_max
+#     - service: tts.google_translate_say
+#       entity_id: media_player.living_room_google_speaker
+#       data:
+#         message: 'Ipad er ved at dø.'
+#         language: 'da'
+
+# - alias: Ipad Battery Above 99
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sensor.dagmars_ipad_battery_level
+#     above: 99
+#   action:
+#     - service: notify.mobile_app_anthon_oneplus_3
+#       data:
+#         title: 'Ipad Batteri'
+#         message: 'Ipad Fuldt Opladt'
+#         data:
+#           ttl: 0
+#           priority: high
+#           channel: alarm_stream_max
+#     - service: tts.google_translate_say
+#       entity_id: media_player.living_room_google_speaker
+#       data:
+#         message: 'Ipad fuldt opladt.'
+#         language: 'da'
+
+
+

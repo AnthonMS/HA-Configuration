@@ -1,0 +1,8 @@
+- alias: Unlock Door On Notification Action
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: unlock_door
+  action:
+    - service: script.unlock_door_and_disarm_alarm

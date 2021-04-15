@@ -1,0 +1,40 @@
+blueprint:
+  name: Light Increase/Decrease
+  description: > 
+    Increase and decrease a zigbee light with a zigbee dimmer switch. 
+    Use for example an Ikea Tradfri On/Off Dimmer or a FoH Double switch left side. 
+    When it's held down, it will start increasing or decreasing. 
+    When it is let go, it will stop at the current brightness.
+  domain: automation
+  input:
+    switch_id:
+      name: DeConz Event Switch ID
+      selector:
+        text:
+    light:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data: 
+    id: !input switch_id
+action:
+  - service: deconz.configure
+    data_template: 
+      entity: !input light
+      field: '/state'
+      data: >
+        {% if trigger.event.data.event == 1001 %}
+          {"bri_inc":254, "transitiontime":20}
+        {% elif trigger.event.data.event == 1003 %}
+          {"bri_inc":0}
+        {% elif trigger.event.data.event == 2001 %}
+          {"bri_inc":-254, "transitiontime":20}
+        {% elif trigger.event.data.event == 2003 %}
+          {"bri_inc":0}
+        {% endif %}
+

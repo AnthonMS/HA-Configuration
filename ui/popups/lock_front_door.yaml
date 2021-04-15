@@ -1,0 +1,62 @@
+type: vertical-stack
+cards:
+
+################  TOP MARGIN  ################
+  - type: custom:button-card
+    styles:
+      card:
+        - width: 0px
+        - height: 10px
+
+  - type: alarm-panel
+    name: House Alarm
+    entity: alarm_control_panel.home_alarm
+    states:
+      - arm_away
+
+  - type: picture-glance
+    title: Front Door
+    camera_image: camera.front_door_cam
+    camera_view: live
+    entities:
+      - entity: binary_sensor.front_door_motion
+        tap_action: 
+          action: more-info
+      - entity: camera.front_door_dafang_motion_snapshot
+        icon: mdi:camera-outline
+        tap_action:
+          action: call-service
+          service: script.front_door_snapshot
+      - entity: lock.front_door
+        tap_action:
+          action: more-info
+
+  # - type: vertical-stack
+  #   cards:
+  #   - type: custom:button-card
+  #     entity: camera.front_door_cam
+  #     label: Front Door
+  #     show_entity_picture: true
+  #     show_live_stream: true
+  #     show_name: false
+  #     show_label: false
+  #     show_icon: false
+  #     show_state: false
+  #     styles:
+  #       card:
+  #         - height: 100px
+  #         - border-radius: 15px
+  #         - background-color: rgba(230, 230, 230, 0.5)
+  #       entity_picture:
+  #         - width: 100%
+  #     tap_action:
+  #       action: more-info
+
+
+
+################  BOTTOM MARGIN  ################
+  - type: custom:button-card
+    styles:
+      card:
+        - width: 0px
+        - height: 10px

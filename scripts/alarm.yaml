@@ -1,0 +1,89 @@
+trigger_alarm:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.alarm_notify_anthon
+    - service: script.turn_on
+      entity_id: script.alarm_blink_lights_red
+    - service: media_player.volume_set
+      entity_id: media_player.living_room_speakers
+      data:
+        volume_level: '0.5' # 50%
+    # - service: tts.google_translate_say
+    #   entity_id: media_player.living_room_speakers
+    #   data:
+    #     message: 'Smil du er på kamera. Politiet er notificeret og på vej.'
+    #     language: 'da'
+    - service: tts.google_translate_say
+      entity_id: media_player.living_room_speakers
+      data:
+        message: "Smile you're on camera. Police has been notified."
+        language: 'en'
+    - service: script.turn_on
+      entity_id: script.alarm_play_sound
+  
+
+alarm_play_sound:
+  sequence:
+    - repeat:
+        while:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: alarm_control_panel.home_alarm
+                state: 'disarmed'
+        sequence:
+          - service: media_extractor.play_media
+            data:
+              entity_id: media_player.living_room_speakers
+              media_content_id: http://192.168.1.25:8123/local/audio/alarm1.mp3
+              media_content_type: music
+          - service: media_player.volume_up
+            data:
+              entity_id: media_player.living_room_speakers
+          - delay: 28
+  
+
+alarm_blink_lights_red:
+  sequence:
+    - repeat:
+        while:
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: alarm_control_panel.home_alarm
+                state: 'disarmed'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.speakers
+              brightness: 255
+              rgb_color: [255, 0, 0]
+          - delay: 1
+          - service: light.turn_off
+            entity_id: light.speakers
+          - delay: 1
+
+
+
+
+
+alarm_notify_anthon:
+  sequence:
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: "ALARM!"
+        message: "Alarm er blevet triggered!"
+        data:
+          color: 'red'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: "Alarm has been triggered!"
+        message: TTS
+        data:
+          color: 'red'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max

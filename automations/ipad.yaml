@@ -1,0 +1,25 @@
+- alias: Ipad Battery Below 15
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.dagmars_ipad_battery_level
+    below: 15
+  condition:
+    - condition: state
+      entity_id: sensor.dagmars_ipad_battery_state
+      state: 'Not Charging'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.sonoffdev2_relay
+
+- alias: Ipad Battery Above 99
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.dagmars_ipad_battery_level
+    above: 99
+  condition:
+    - condition: state
+      entity_id: sensor.dagmars_ipad_battery_state
+      state: 'Charging'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoffdev2_relay

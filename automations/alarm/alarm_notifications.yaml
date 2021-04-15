@@ -1,0 +1,90 @@
+- alias: notify_on_alarm_disarm
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'disarmed'
+  action:
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: 'Alarm!'
+        message: "Alarm frakoblet - {{ states('sensor.date_time') }}"
+        data:
+          color: 'red'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+          actions:
+            - action: "arm_alarm"
+              title: "Arm Alarm"
+
+- alias: notify_on_alarm_pending
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'pending'
+  action:
+    - service: media_player.volume_set
+      entity_id: media_player.living_room_speakers
+      data:
+        volume_level: '0.35' # 100%
+    - service: tts.google_translate_say
+      entity_id: media_player.living_room_speakers
+      data:
+        message: "Alarm has been triggered"
+        language: 'en'
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: 'Alarm!'
+        message: "Alarm afventer trigger - {{ states('sensor.date_time') }}"
+        data:
+          color: 'red'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+          actions:
+            - action: "disarm_alarm"
+              title: "Disarm Alarm"
+
+- alias: notify_on_alarm_arming
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'arming'
+  action:
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: 'Alarm!'
+        message: "Alarm afventer tilkobling - {{ states('sensor.date_time') }}"
+        data:
+          tag: 'alarm_arming'
+          color: 'green'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+          actions:
+            - action: "disarm_alarm"
+              title: "Disarm Alarm"
+
+- alias: notify_on_alarm_arm_away
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'armed_away'
+  action:
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        message: clear_notification
+        data:
+          tag: 'alarm_arming'
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: 'Alarm!'
+        message: "Alarm tilkoblet - {{ states('sensor.date_time') }}"
+        data:
+          color: 'green'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+          actions:
+            - action: "disarm_alarm"
+              title: "Disarm Alarm"

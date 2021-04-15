@@ -1,0 +1,24 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: switch.anthon_pc_wol
+        icon: fas:power-off
+        label: Tænd/Sluk
+        show_state: false
+        show_name: false
+        show_label: true
+        styles:
+          card:
+            - height: 75px
+            - background-color: >
+                [[[
+                  if (entity.state == "off") return "rgba(65, 65, 65,0.5)";
+                  else return "rgba(255, 255, 255,0.3)";
+                ]]]
+          icon:
+            - height: 25px
+            - width: 25px
+        tap_action:
+          action: toggle

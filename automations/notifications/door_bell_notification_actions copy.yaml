@@ -1,0 +1,23 @@
+# - alias: Disarm Alarm On Notification Action
+#   trigger:
+#     platform: event
+#     event_type: mobile_app_notification_action
+#     event_data:
+#       action: disarm_alarm
+#   action:
+#     - service: alarm_control_panel.alarm_disarm
+#       data:
+#         entity_id: alarm_control_panel.home_alarm
+#         code: !secret home_alarm_code
+
+# - alias: Arm Alarm On Notification Action
+#   trigger:
+#     platform: event
+#     event_type: mobile_app_notification_action
+#     event_data:
+#       action: arm_alarm
+#   action:
+#     - service: alarm_control_panel.alarm_arm_away
+#       data:
+#         entity_id: alarm_control_panel.home_alarm
+#         code: !secret home_alarm_code

@@ -1,0 +1,35 @@
+title: iPad Mini
+icon: mdi:tablet-android
+panel: false
+
+
+cards:
+  - type: picture-glance
+    title: Front Door
+    camera_image: camera.front_door_cam
+    camera_view: live
+    entities:
+      - entity: binary_sensor.front_door_motion
+        tap_action: 
+          action: more-info
+      - entity: camera.front_door_dafang_motion_snapshot
+        icon: mdi:camera-outline
+        tap_action:
+          action: call-service
+          service: script.front_door_snapshot
+      - entity: lock.front_door
+        tap_action:
+          action: more-info
+          
+  - type: alarm-panel
+    name: House Alarm
+    entity: alarm_control_panel.home_alarm
+    states:
+      - arm_away
+
+  - type: entities
+    title: Test
+    entities:
+      - light.entrance_spots
+      - light.dinner_table_spots
+      - cover.bedroom_blind

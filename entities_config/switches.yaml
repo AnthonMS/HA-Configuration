@@ -1,0 +1,23 @@
+- platform: wake_on_lan
+  name: "Anthon PC WOL"
+  mac: "4C-CC-6A-05-25-48"
+  host: '192.168.1.10'
+  turn_off:
+    service: script.toggle
+    entity_id: script.computer_shutdown
+
+# - platform: wake_on_lan
+#   name: "Android TV 1 WOL Wireless"
+#   mac: "3C-A0-67-91-B1-55"
+#   host: '192.168.0.13'
+#   # turn_off:
+#   #   service: script.toggle
+#   #   entity_id: script.computer_shutdown
+
+# - platform: wake_on_lan
+#   name: "Android TV 1 WOL Lan"
+#   mac: "1C-5A-6B-EF-11-CC"
+#   host: '192.168.0.14'
+#   # turn_off:
+#   #   service: script.toggle
+#   #   entity_id: script.computer_shutdown

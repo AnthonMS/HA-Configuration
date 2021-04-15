@@ -1,0 +1,43 @@
+office_desk_blink:
+  sequence:
+    - service: scene.create
+      data:
+        scene_id: before
+        snapshot_entities:
+          - light.grono_lamp_office
+
+    - service: light.turn_on
+      entity_id: light.grono_lamp_office
+      data:
+        color_name: "{{ color }}"
+        white_value: 0
+    - delay: 1
+
+    - service: light.turn_off
+      entity_id: light.grono_lamp_office
+    - delay: 1
+
+    - service: light.turn_on
+      entity_id: light.grono_lamp_office
+      data:
+        color_name: "{{ color }}"
+        white_value: 0
+    - delay: 1
+
+    - service: light.turn_off
+      entity_id: light.grono_lamp_office
+    - delay: 1
+
+    - service: light.turn_on
+      entity_id: light.grono_lamp_office
+      data:
+        color_name: "{{ color }}"
+        white_value: 0
+    - delay: 1
+
+    - service: light.turn_off
+      entity_id: light.grono_lamp_office
+    - delay: 1
+
+    - service: scene.turn_on
+      entity_id: scene.before

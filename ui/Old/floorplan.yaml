@@ -1,0 +1,18 @@
+title: Floorplan
+icon: mdi:floor-plan
+panel: true
+#1st Floor
+cards:
+  - type: vertical-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: input_select.floorplan_floor
+            state: "Basement"
+        card: !include floorplan/basement.yaml
+
+      - type: conditional
+        conditions:
+          - entity: input_select.floorplan_floor
+            state: "1st Floor"
+        card: !include floorplan/1st_floor.yaml

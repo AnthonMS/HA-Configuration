@@ -1,0 +1,89 @@
+anthon_alarm:
+  name: Anthon Alarm
+
+
+# bedroom_fan:
+#   name: Bedroom Fan
+#   icon: mdi:fan
+
+#### Dummy Entities ####
+### Other
+# dummy_entity:
+#   name: Dummy Entity
+# living_room_fan_1:
+#   name: Living Room Fan 1
+# living_room_fan_2:
+#   name: Living Room Fan 2
+# living_room_fan_3:
+#   name: Living Room Fan 3
+# bedroom_fan_1:
+#   name: Bedroom Fan 1
+# bedroom_fan_2:
+#   name: Bedroom Fan 2
+# bedroom_fan_3:
+#   name: Bedroom Fan 3
+# office_fan_1:
+#   name: Office Fan 1
+# office_fan_2:
+#   name: Office Fan 2
+# office_fan_3:
+#   name: Office Fan 3
+
+# ### Lights
+# ## 1st Floor
+# entrance:
+#   name: Entrance
+# stair_lights:
+#   name: Stair Lights
+# stair_leds:
+#   name: Stair LEDs
+# # kitchen:
+# #   name: Kitchen
+# kitchen_bar:
+#   name: Kitchen Bar
+# kitchen_countertop:
+#   name: Countertop LEDs
+# bathroom:
+#   name: Bathroom
+# dinner_table_light:
+#   name: Dinner Table Light
+# # sofa_light:
+# #   name: Sofa Light
+# corner_lights:
+#   name: Corner Lights
+# window_candles:
+#   name: Candles Window
+# sofa_table_candles:
+#   name: Candles Sofa Table
+# speaker_lights:
+#   name: Speaker Lights
+
+# ## 2nd Floor
+# bedroom:
+#   name: Bedroom
+# bed_leds:
+#   name: Bed LEDs
+# beam_leds:
+#   name: Beam LEDs
+# nightlight_left:
+#   name: Nightlight Left
+# nightlight_right:
+#   name: Nightlight Right
+# office:
+#   name: Office
+# office_desk_lamp:
+#   name: Office Desk
+
+# ## Basement
+# # basement_entrance:
+# #   name: Basement Entrance
+# basement_workshop:
+#   name: Workshop
+# # basement_hall:
+# #   name: Basement Hall
+# basement_stairs:
+#   name: Basement Stairs
+# basement_stair_leds:
+#   name: Basement Stair LEDs
+# basement_laundry_room:
+#   name: Laundry Room

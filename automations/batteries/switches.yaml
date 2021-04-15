@@ -1,0 +1,51 @@
+- alias: Switch Battery Below 10
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.door_bell_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.front_door_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.kitchen_switch_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.living_room_switch_1_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.living_room_switch_2_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.bedroom_switch_new_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_entrance_and_hall_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_entrance_switch_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_room_controller_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_room_switch_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_hall_switch_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_stairs_door_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.basement_entrance_motion_battery_level
+      below: 10
+  action:
+    - service: notify.mobile_app_anthon_oneplus_3
+      data:
+        title: 'Kontakt Batteri'
+        message: 'Tjek batteri på kontakter'
+        data:
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+

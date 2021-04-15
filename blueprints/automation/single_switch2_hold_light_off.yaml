@@ -1,0 +1,33 @@
+blueprint:
+  name: Light2 Turn On At Full Brightness
+  description: Turn On Light with a ZigBee switch using deconz_event
+  domain: automation
+  input:
+    switch_id:
+      name: DeConz Event Switch ID
+      selector:
+        text:
+    light:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+
+
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data: 
+    id: !input switch_id
+    event: 3001
+condition:
+  - condition: state
+    entity_id: !input light
+    state: 'off'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: !input light
+      transition: 0.2
+      brightness: 254
+

@@ -1,0 +1,45 @@
+blueprint:
+  name: Double Turn On At Half Brightness
+  description: Turn On Two Lights with a ZigBee switch using deconz_event
+  domain: automation
+  input:
+    switch_id:
+      name: DeConz Event Switch ID
+      selector:
+        text:
+    light1:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+    light2:
+      name: Light Entity
+      selector:
+        entity:
+          domain: light
+
+
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data: 
+    id: !input switch_id
+    event: 6002
+condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: !input light1
+        state: 'off'
+      - condition: state
+        entity_id: !input light2
+        state: 'off'
+action:
+    service: light.turn_on
+    data:
+      entity_id: 
+        - !input light1
+        - !input light2
+      transition: 0.2
+      brightness: 127
+

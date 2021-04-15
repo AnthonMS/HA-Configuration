@@ -1,0 +1,137 @@
+vertical_slider:
+  default: 
+    icon: mdi:wall-sconce-flat
+    name: 'NoName'
+    card_height: 100px
+    card_width: 100px
+  card:
+    type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            styles:
+              card:
+                - background-color: rgba(255, 255, 255, 0)
+                - box-shadow: "0px 0px 0px rgba(0,0,0,0)"
+                - height: 0px
+
+          - type: custom:button-card
+            entity: '[[entity]]'
+            name: '[[name]]'
+            icon: '[[icon]]'
+            show_state: false
+            show_name: true
+            show_label: false
+            styles: 
+              card:
+                - background-color: >
+                    [[[
+                      if (entity.state == "off") return "rgba(230, 230, 230, 0.5)";
+                      else return "rgba(255, 255, 255, 1)";
+                    ]]]
+                - border-radius: 10%
+                - height: '[[card_height]]'
+                - width: '[[card_width]]'
+                - padding: 10%
+                - color: ivory
+                - font-size: 10px
+                - text-shadow: 0px 0px 0px black
+                - text-transform: capitalize
+                - margin: 0px
+              grid:
+                - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+                - grid-template-columns: 1fr 1fr
+                - grid-template-rows: 1fr min-content min-content min-content min-content
+              name:
+                - font-weight: bold
+                - font-size: 13px
+                - color: white
+                - align-self: middle
+                - justify-self: start
+                - padding-bottom: 4px
+                - color: black
+              img_cell:
+                - justify-content: start
+                - align-items: start
+                - margin: none
+              icon:
+                - width: 30px
+                - margin-top: -10%
+                - color: >
+                    [[[
+                      if (entity.state == "off") return "rgba(86, 86, 86, 0.5)";
+                      else return "rgba(253, 216, 53, 1)";
+                    ]]]
+              custom_fields:
+                sd:
+                  - align-self: middle
+                  - justify-self: start
+                  - --text-color-sensor: black
+              #    - --text-color-sensor: '[[[ if (states["sensor.raspi_sd"].state > 80) return "red"; ]]]'
+                ram:
+                  - padding-bottom: 2px
+                  - align-self: middle
+                  - justify-self: start
+                  - --text-color-sensor: black
+
+            custom_fields: 
+              sd: >
+                [[[
+                  if (entity.state == "on") 
+                    return `<span style="color: var(--text-color-sensor);"> ${ Math.round(entity.attributes.brightness/2.55) } </span>`;
+                  else
+                    return `<span style="color: var(--text-color-sensor);"> ${ entity.state } </span>`;
+                ]]]
+            tap_action:
+              action: toggle
+            double_tap_action:
+              action: fire-dom-event
+              browser_mod:
+                command: popup
+                hide_header: true
+                card: 
+                  type: custom:light-popup-card
+                  entity: '[[entity]]'
+                  icon: mdi:wall-sconce-flat
+                  fullscreen: false
+                  settings: false
+            hold_action:
+              action: more-info
+
+          - type: custom:button-card
+            styles:
+              card:
+                - background-color: rgba(255, 255, 255, 0)
+                - box-shadow: "0px 0px 0px rgba(0,0,0,0)"
+                - height: 0px
+
+
+      - type: custom:slider-card
+        entity: '[[entity]]'
+        rotate: "270"
+        top: "210px" # calc(50% - (var(--slider-width) / 2))
+        left: "-203px" # calc(50% - (var(--slider-height) / 2));
+        containerHeight: 500px
+        width: 500px
+        height: 80px
+        radius: 5px
+        border: '1px solid white'
+        mainSliderColor: rgba(255, 255, 255, 1)
+        secondarySliderColor: rgba(65, 65, 65, 0.3)
+        thumbWidth: '16px'
+        thumbHeight: '500px'
+        thumbColor: 'rgba(33, 33, 33, 1)'
+        thumbHorizontalPadding: '4px'
+        thumbVerticalPadding: '0px'
+        thumbTop: '0px'
+        thumbBorderRight: '0px'
+        thumbBorderLeft: '0px'
+        thumbBorderTop: '0px'
+        thumbBorderBotton: '0px'
+        style: |
+          ha-card {
+            --ha-card-background: rgba(230, 230, 230, 0);
+            border-radius: 5px;
+            width: 80px;
+          }

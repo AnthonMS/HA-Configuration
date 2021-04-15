@@ -1,0 +1,48 @@
+computer_shutdown:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/shutdown"
+        payload: ""
+
+computer_suspend:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/suspend"
+        payload: ""
+
+computer_hibernate:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/hibernate"
+        payload: ""
+
+computer_reboot:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/reboot"
+        payload: ""
+
+computer_lock:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/lock"
+        payload: ""
+
+computer_logoff:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/logoff"
+        payload: ""
+
+computer_vol_mute:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/desktop-ct2d9sp/commands/volume/mute"
+        payload: ""

@@ -1,0 +1,86 @@
+speaker_play_pause:
+  sequence:
+    - service: media_player.media_play_pause
+      target:
+        entity_id: >
+          {% if (states["input_select.speaker_select"].state == "Living Room Sonos") %}
+            media_player.living_room_speakers
+          {% elif (states["input_select.speaker_select"].state == "Living Room Google") %}
+            media_player.living_room_google_speaker
+          {% elif (states["input_select.speaker_select"].state == "Kitchen Display") %}
+            media_player.kitchen_display
+          {% elif (states["input_select.speaker_select"].state == "Office Google") %}
+            media_player.office_google
+          {% endif%}
+
+speaker_next_track:
+  sequence:
+    - service: media_player.media_next_track
+      target:
+        entity_id: >
+          {% if (states["input_select.speaker_select"].state == "Living Room Sonos") %}
+            media_player.living_room_speakers
+          {% elif (states["input_select.speaker_select"].state == "Living Room Google") %}
+            media_player.living_room_google_speaker
+          {% elif (states["input_select.speaker_select"].state == "Kitchen Display") %}
+            media_player.kitchen_display
+          {% elif (states["input_select.speaker_select"].state == "Office Google") %}
+            media_player.office_google
+          {% endif%}
+
+speaker_previous_track:
+  sequence:
+    - service: media_player.media_previous_track
+      target:
+        entity_id: >
+          {% if (states["input_select.speaker_select"].state == "Living Room Sonos") %}
+            media_player.living_room_speakers
+          {% elif (states["input_select.speaker_select"].state == "Living Room Google") %}
+            media_player.living_room_google_speaker
+          {% elif (states["input_select.speaker_select"].state == "Kitchen Display") %}
+            media_player.kitchen_display
+          {% elif (states["input_select.speaker_select"].state == "Office Google") %}
+            media_player.office_google
+          {% endif%}
+
+
+speaker_play_radio:
+  sequence:
+    - service: media_extractor.play_media
+      target:
+        entity_id: >
+          {% if (states["input_select.speaker_select"].state == "Living Room Sonos") %}
+            media_player.living_room_speakers
+          {% elif (states["input_select.speaker_select"].state == "Living Room Google") %}
+            media_player.living_room_google_speaker
+          {% elif (states["input_select.speaker_select"].state == "Kitchen Display") %}
+            media_player.kitchen_display
+          {% elif (states["input_select.speaker_select"].state == "Office Google") %}
+            media_player.office_google
+          {% endif%}
+      data_template:
+        media_content_type: music
+        media_content_id: "{{ radio_link }}"
+
+speaker_announce:
+  sequence:
+    - service: tts.google_translate_say
+      target:
+        entity_id: >
+          {% if (states["input_select.speaker_select"].state == "Living Room Sonos") %}
+            media_player.living_room_speakers
+          {% elif (states["input_select.speaker_select"].state == "Living Room Google") %}
+            media_player.living_room_google_speaker
+          {% elif (states["input_select.speaker_select"].state == "Kitchen Display") %}
+            media_player.kitchen_display
+          {% elif (states["input_select.speaker_select"].state == "Office Google") %}
+            media_player.office_google
+          {% endif%}
+      data_template:
+        message: '{{ states["input_text.speaker_tts"].state }}'
+    - service: input_text.set_value
+      target:
+        entity_id: input_text.speaker_tts
+      data:
+        value: ''
+

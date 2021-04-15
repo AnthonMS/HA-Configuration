@@ -1,0 +1,81 @@
+# 1004 - Short Click
+# 1006 - Double Click
+# 1010 - Triple Click
+# 1001 - Hold
+# 1002 - Release
+
+
+- alias: Door Bell Flash Desk Lamp
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: door_bell
+  condition:
+    - condition: state
+      entity_id: switch.anthon_pc_wol
+      state: "on"
+  action:
+    - service: script.office_desk_blink
+      data:
+        light: light.grono_lamp_office
+        color: green
+
+- alias: Door Bell Single Click
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: door_bell
+      event: 1004
+  action:
+    - service: script.turn_on
+      entity_id: 
+        - script.door_bell_notify_anthon
+        - script.door_bell_notify_tv
+        - script.door_bell_notify_ipad
+        # - script.front_door_snapshot
+
+- alias: Door Bell Double Click
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: door_bell
+      event: 1006
+  action:
+    - service: script.turn_on
+      entity_id: 
+        - script.door_bell_notify_anthon
+        - script.door_bell_notify_tv
+        - script.door_bell_notify_ipad
+        # - script.front_door_snapshot
+
+- alias: Door Bell Triple Click
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: door_bell
+      event: 1010
+  action:
+    - service: script.turn_on
+      entity_id: 
+        - script.door_bell_lock_frontdoor
+        - script.door_bell_notify_anthon
+        # - script.front_door_snapshot
+
+- alias: Door Bell Hold
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: door_bell
+      event: 1001
+  action:
+    - service: script.turn_on
+      entity_id: 
+        - script.door_bell_notify_anthon
+        - script.door_bell_notify_tv
+        - script.door_bell_notify_ipad
+        # - script.front_door_snapshot

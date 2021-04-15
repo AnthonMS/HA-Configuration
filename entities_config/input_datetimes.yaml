@@ -1,0 +1,4 @@
+anthon_alarm:
+  name: Anthon Alarm Time
+  has_date: false
+  has_time: true

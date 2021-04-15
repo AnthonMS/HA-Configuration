@@ -1,0 +1,25 @@
+### Script to start alarm rutine with next_alarm sensor
+# - alias: start_alarm
+#   trigger:
+#     - platform: template
+#       value_template: >
+#         {% if states('sensor.anthon_oneplus_3_next_alarm') != 'unavailable' %}
+#           {{ now().strftime("%H:%M") == (((state_attr('sensor.anthon_oneplus_3_next_alarm', 'Time in Milliseconds') | int / 1000) + 0*60 ) | timestamp_custom('%H:%M')) }}
+#         {% else %}
+#           False
+#         {% endif %}
+#   action:
+#     - service: script.turn_on
+#       entity_id: script.start_alarm
+
+- alias: start_morning_alarm
+  trigger:
+    platform: time
+    at: input_datetime.anthon_alarm
+  condition:
+    - condition: state
+      entity_id: input_boolean.anthon_alarm
+      state: 'on'
+  action:
+    service: script.turn_on
+    entity_id: script.start_morning_alarm

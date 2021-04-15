@@ -450,3 +450,11 @@
     input:
       switch_id: stairs_spots_switch_top
       light: light.stairs_spots
+- id: '1618511236472'
+  alias: Bedroom Roller Blind Handler
+  description: ''
+  use_blueprint:
+    path: zigbee_switch/roller_blind_handler.yaml
+    input:
+      switch_id: bedroom_switch_blind
+      cover: cover.bedroom_blind

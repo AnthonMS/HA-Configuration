@@ -1,0 +1,35 @@
+blueprint:
+  name: Roller Blind Handler
+  description: >
+    Open/Close roller blind with zigbee switch in deconz
+  domain: automation
+  input:
+    switch_id:
+      name: DeConz Event Switch ID
+      selector:
+        text:
+    cover:
+      name: Cover Entity
+      selector:
+        entity:
+          domain: cover
+
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data: 
+    id: !input switch_id
+action:
+  - service_template: >
+      {% if trigger.event.data.event == 1002 %}
+        cover.open_cover
+      {% elif trigger.event.data.event == 2002 %}
+        cover.close_cover
+      {% elif trigger.event.data.event == 1003 %}
+        cover.stop_cover
+      {% elif trigger.event.data.event == 2003 %}
+        cover.stop_cover
+      {% endif %}
+    data:
+      entity_id: !input cover
+

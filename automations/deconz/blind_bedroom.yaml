@@ -1,43 +1,43 @@
-- alias: Bedroom Blind Open
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch_blind
-      event: 1002
-  action:
-    service: cover.open_cover
-    entity_id: cover.bedroom_blind
+# - alias: Bedroom Blind Open
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_blind
+#       event: 1002
+#   action:
+#     service: cover.open_cover
+#     entity_id: cover.bedroom_blind
 
-- alias: Bedroom Blind Open Stop
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch_blind
-      event: 1003
-  action:
-    service: cover.stop_cover
-    entity_id: cover.bedroom_blind
+# - alias: Bedroom Blind Open Stop
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_blind
+#       event: 1003
+#   action:
+#     service: cover.stop_cover
+#     entity_id: cover.bedroom_blind
 
-- alias: Bedroom Blind Close
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch_blind
-      event: 2002
-  action:
-    service: cover.close_cover
-    entity_id: cover.bedroom_blind
+# - alias: Bedroom Blind Close
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_blind
+#       event: 2002
+#   action:
+#     service: cover.close_cover
+#     entity_id: cover.bedroom_blind
 
-- alias: Bedroom Blind Close Stop
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch_blind
-      event: 2003
-  action:
-    service: cover.stop_cover
-    entity_id: cover.bedroom_blind
+# - alias: Bedroom Blind Close Stop
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: bedroom_switch_blind
+#       event: 2003
+#   action:
+#     service: cover.stop_cover
+#     entity_id: cover.bedroom_blind

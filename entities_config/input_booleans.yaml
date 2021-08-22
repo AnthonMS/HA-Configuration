@@ -1,6 +1,12 @@
 anthon_alarm:
   name: Anthon Alarm
 
+alarm_override:
+  name: Alarm Override
+
+# test_fan:
+#   name: Test Fan
+#   icon: mdi:fan
 
 # bedroom_fan:
 #   name: Bedroom Fan

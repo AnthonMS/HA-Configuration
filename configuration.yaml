@@ -7,6 +7,8 @@ homeassistant:
   unit_system: metric
   time_zone: !secret time_zone
   customize: !include customize.yaml
+  whitelist_external_dirs:
+    - /media/doorbell_snapshots/
 
 logger:
   default: error
@@ -68,6 +70,44 @@ browser_mod:
       name: iPad Living Room
 
 
+# fan:
+#   - platform: template
+#     fans:
+#       test_fan:
+#         friendly_name: "Test Fan"
+#         value_template: "{{ states('input_boolean.test_fan') }}"
+#         percentage_template: "{{ states('input_number.test_fan_percentage') }}"
+#         preset_mode_template: "{{ states('input_select.test_fan_preset_mode') }}"
+#         oscillating_template: "{{ states('input_select.test_fan_osc') }}"
+#         direction_template: "{{ states('input_select.test_fan_direction') }}"
+#         turn_on:
+#           service: script.fan_on
+#         turn_off:
+#           service: script.fan_off
+#         set_percentage:
+#           service: script.fans_set_speed
+#           data:
+#             percentage: "{{ percentage }}"
+#         # set_preset_mode:
+#         #   service: script.fans_set_preset_mode
+#         #   data:
+#         #     preset_mode: "{{ preset_mode }}"
+#         # set_oscillating:
+#         #   service: script.fan_oscillating
+#         #   data:
+#         #     oscillating: "{{ oscillating }}"
+#         # set_direction:
+#         #   service: script.fan_direction
+#         #   data:
+#         #     direction: "{{ direction }}"
+#         # speed_count: 6
+#         preset_modes:
+#           - 'auto'
+#           - 'smart'
+#           - 'whoosh'
+
+
+
 media_player:
   - platform: androidtv
     name: Living Room TV
@@ -112,12 +152,18 @@ device_tracker: !include entities_config/device_trackers.yaml
 lovelace:
   mode: yaml
   dashboards:
+    dev-view:
+      mode: yaml
+      filename: ui-lovelace-old.yaml
+      title: Old UI
+      show_in_sidebar: true
+      require_admin: false
     ipad-view: # Needs to contain a hyphen (-)
       mode: yaml
       filename: ui-ipad.yaml
       title: Ipad
       icon: mdi:tablet-android
-      show_in_sidebar: true
+      show_in_sidebar: false
       require_admin: false
     ipad-mini-view: # Needs to contain a hyphen (-)
       mode: yaml
@@ -127,12 +173,17 @@ lovelace:
       show_in_sidebar: false
       require_admin: false
   resources:
-
     - url: /local/plugins/time-input-row.js
       type: js
     - url: /local/plugins/theme-maker.js
       type: js
-    - url: /local/plugins/slider-card.js?v=41
+    - url: /local/plugins/slider-card.js?v=011
+      type: module
+    # - url: /local/plugins/test-card.js?v=001
+    #   type: module
+    # - url: http://192.168.1.16:5000/my-slider.js?v=001
+    #   type: module
+    - url: /hacsfiles/ha-slider-card/my-slider.js
       type: module
       
     - url: /hacsfiles/bar-card/bar-card.js
@@ -165,44 +216,21 @@ lovelace:
       type: module
     - url: /hacsfiles/light-popup-card/light-popup-card.js
       type: module
-
     - url: /hacsfiles/lovelace-text-input-row/lovelace-text-input-row.js?v=0.1
       type: module
 
-      
-    # - url: /local/community/bar-card/bar-card.js
-    #   type: module
-    # - url: /local/community/light-entity-card/light-entity-card.js
-    #   type: module
-    # - url: /local/community/mini-media-player/mini-media-player-bundle.js
-    #   type: module
-    # - url: /local/community/vertical-stack-in-card/vertical-stack-in-card.js
-    #   type: module
-    # - url: /local/community/button-card/button-card.js
-    #   type: module
-    # - url: /local/community/lovelace-card-mod/card-mod.js
-    #   type: module
-    # - url: /local/community/lovelace-card-tools/card-tools.js
-    #   type: module
-    # - url: /local/community/lovelace-fold-entity-row/fold-entity-row.js
-    #   type: module
-    # - url: /local/community/lovelace-slider-entity-row/slider-entity-row.js
-    #   type: module
-    # - url: /local/community/lovelace-state-switch/state-switch.js
-    #   type: module
-    # - url: /local/community/lovelace-time-picker-card/time-picker-card.js
-    #   type: module
-    # - url: /local/community/lovelace-layout-card/layout-card.js
-    #   type: module
-    # - url: /local/community/hass-bha-icons/hass-bha-icons.js
-    #   type: module
-    # - url: /local/community/decluttering-card/decluttering-card.js
-    #   type: module
-    # - url: /local/community/light-popup-card/light-popup-card.js
-    #   type: module
-
-    # - url: /local/community/lovelace-text-input-row/lovelace-text-input-row.js?v=0.1
-    #   type: module
+    - url: /hacsfiles/slider-button-card/slider-button-card.js
+      type: module
+    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
+      type: module
+    - url: /hacsfiles/lovelace-hui-element/hui-element.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/null
+      type: module
+    - url: /hacsfiles/swipe-card/swipe-card.js
+      type: module
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
+      type: module
 
 
 ### Google Configuration
@@ -278,6 +306,7 @@ cloud:
         - switch.grono_lampe_1_nightlight
         - switch.grono_lampe_1_sync_receive
         - switch.grono_lampe_1_sync_send
+        - alarm_control_panel.home_alarm
         # - input_select.floorplan_floor
         # - input_select.radio_channel
         # - media_player.alrum
@@ -439,7 +468,7 @@ cloud:
           - Front Door
           - Front Door Lock
         room: Hus
-      alarm_control_panel.home_alarm:
+      alarm_control_panel.verisure_alarm:
         name: Alarm System
         aliases:
           - Hjemme Alarm

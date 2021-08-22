@@ -1,0 +1,65 @@
+type: grid
+title: Living Room
+view_layout:
+  grid-area: livingroom
+columns: 2
+cards:
+
+###########  Light Sofa Spots  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_spots_homekit
+        variables:
+          - name: Sofa
+          - entity: light.sofa_spots
+          - card_height: 100px
+
+###########  Slider Sofa Spots  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.sofa_spots
+
+
+
+###########  Light Dinner Table Spots  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_spots_homekit
+        variables:
+          - name: Dinner Table
+          - entity: light.dinner_table_spots
+          - card_height: 100px
+
+###########  Slider Dinner Table Spots  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.dinner_table_spots
+
+
+
+###########  Light Speakers Light  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_color_homekit
+        variables:
+          - name: Speakers
+          - entity: light.speakers
+          - icon: mdi:lamp
+          - card_height: 100px
+
+###########  Slider Speakers Light  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.speakers
+          
+################# Living Room Blind 1 #######################
+  - type: custom:decluttering-card
+    template: roller_shade_homekit
+    variables:
+      - entity: cover.livingroom_blind_1

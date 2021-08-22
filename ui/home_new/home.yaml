@@ -1,0 +1,87 @@
+title: Hjem Telefon
+icon: mdi:home-outline
+panel: false
+path: home
+visible: true
+type: custom:grid-layout
+layout:
+  #default
+  grid-gap: var(--custom-layout-card-padding)
+  grid-template-columns: repeat(4, 1fr) 0
+  grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+  grid-template-areas: |
+    "header      header   header       header"
+    "livingroom  kitchen  otherfirst   otherfirst"
+    "bedroom     office   basement  basement"
+    "footer      footer   footer       footer"
+  mediaquery:
+    #phone
+    "(max-width: 1200px)":
+      grid-gap: calc(var(--custom-layout-card-padding) * 1.5)
+      grid-template-columns: 0 repeat(2, 1fr) 0
+      grid-template-rows: 0 repeat(5, fit-content(100%)) 0fr
+      grid-template-areas: |
+        ".  .           .            ."
+        ".  livingroom  kitchen      ."
+        ".  otherfirst  otherfirst   ."
+        ".  bedroom     office       ."
+        ".  basement    basement     ."
+        ".  footer      footer       ."
+        ".  .           .            ."
+cards:
+
+  #################################################
+  #                                               #
+  #               LIVING ROOM                     #
+  #                                               #
+  #################################################
+  - !include living_room.yaml
+
+  #################################################
+  #                                               #
+  #                  KITCHEN                      #
+  #                                               #
+  #################################################
+  - !include kitchen.yaml
+
+  #################################################
+  #                                               #
+  #                    OTHER                      #
+  #                                               #
+  #################################################
+  - !include other_first.yaml
+
+  # #################################################
+  # #                                               #
+  # #                     BEDROOM                   #
+  # #                                               #
+  # #################################################
+  - !include bedroom.yaml
+
+  #################################################
+  #                                               #
+  #                     OFFICE                    #
+  #                                               #
+  #################################################
+  - !include office.yaml
+
+  ################################################
+  #                                              #
+  #                OTHER SECOND                  #
+  #                                              #
+  ################################################
+  - !include basement.yaml
+
+  # #################################################
+  # #                                               #
+  # #                    FOOTER                     #
+  # #                                               #
+  # #################################################
+
+  # - type: markdown
+  #   view_layout:
+  #     grid-area: footer
+  #   content: >
+  #     This is the footer
+  #   style: #force style - duplicate of themes markdown
+  #     {.: "ha-card,ha-markdown{background:0 0;padding:0!important;pointer-events:none;margin-top:-1vw}ha-markdown{overflow:hidden}\n", ha-markdown$: "ha-markdown-element{opacity:.6;font-size:1.26vw;font-weight:400;--mdc-icon-size:1.2vw;font-family:SF Display;letter-spacing:.05vw;line-height:0;white-space:nowrap}ha-icon{vertical-align:3%;opacity:.4}@media screen and (max-width:800px){ha-markdown-element{display:none}}\n"}

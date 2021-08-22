@@ -14,6 +14,12 @@ computer_volume:
 #   step: 0.01
 
 
+# test_fan_percentage:
+#   min: 0
+#   max: 100
+
+
+
 #### Dummy Entities ####
 ### Lights
 ## Basement

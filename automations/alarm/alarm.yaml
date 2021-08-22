@@ -1,54 +1,54 @@
-- alias: start_intruder_alarm
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home_alarm
-      to: 'triggered'
-  action:
-    - service: script.turn_on
-      entity_id: script.trigger_alarm
+# - alias: start_intruder_alarm
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.home_alarm
+#       to: 'triggered'
+#   action:
+#     - service: script.turn_on
+#       entity_id: script.trigger_alarm
 
-- alias: trigger_alarm
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.front_door
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.basement_stairs_door
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.basement_entrance_motion
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      state: 'armed_away'
-  action:
-    service: alarm_control_panel.alarm_trigger
-    entity_id: alarm_control_panel.home_alarm
-
-
-- alias: stop_alarm_sound
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home_alarm
-      to: 'disarmed'
-  action:
-    - service: media_player.media_stop
-      entity_id: media_player.living_room_speakers
+# - alias: trigger_alarm
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.front_door
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.basement_stairs_door
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.basement_entrance_motion
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: alarm_control_panel.home_alarm
+#       state: 'armed_away'
+#   action:
+#     service: alarm_control_panel.alarm_trigger
+#     entity_id: alarm_control_panel.home_alarm
 
 
-- alias: arm_alarm_on_away
-  trigger:
-    - platform: state
-      entity_id: device_tracker.anthon
-      to: 'not_home'
-  action:
-    - service: script.lock_door_and_arm_alarm
+# - alias: stop_alarm_sound
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.home_alarm
+#       to: 'disarmed'
+#   action:
+#     - service: media_player.media_stop
+#       entity_id: media_player.living_room_speakers
 
-- alias: disarm_alarm_on_home
-  trigger:
-    - platform: state
-      entity_id: device_tracker.anthon
-      to: 'home'
-  action:
-    - service: script.unlock_door_and_disarm_alarm
+
+# - alias: arm_alarm_on_away
+#   trigger:
+#     - platform: state
+#       entity_id: device_tracker.anthon_oneplus_nord
+#       to: 'not_home'
+#   action:
+#     - service: script.lock_door_and_arm_alarm
+
+# - alias: disarm_alarm_on_home
+#   trigger:
+#     - platform: state
+#       entity_id: device_tracker.anthon_oneplus_nord
+#       to: 'home'
+#   action:
+#     - service: script.unlock_door_and_disarm_alarm

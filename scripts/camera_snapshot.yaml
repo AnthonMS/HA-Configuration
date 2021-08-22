@@ -1,7 +1,17 @@
+# front_door_snapshot:
+#   sequence:
+#     - service: camera.snapshot
+#       data_template:
+#         entity_id: camera.front_door_cam
+#         filename: >
+#           /config/www/images/snapshots/snapshot_front_door_{{ now().strftime("%Y%m%d-%H%M%S") }}.jpg
+
+
+
 front_door_snapshot:
   sequence:
     - service: camera.snapshot
       data_template:
         entity_id: camera.front_door_cam
         filename: >
-          /config/www/images/snapshots/snapshot_front_door_{{ now().strftime("%Y%m%d-%H%M%S") }}.jpg
+          /media/doorbell_snapshots/front_door_{{ now().strftime("%Y%m%d-%H%M%S") }}.jpg

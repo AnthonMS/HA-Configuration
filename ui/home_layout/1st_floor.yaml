@@ -398,7 +398,7 @@ cards:
       - type: vertical-stack
         cards:
         - type: custom:button-card
-          entity: alarm_control_panel.home_alarm
+          entity: alarm_control_panel.verisure_alarm
           icon: >
             [[[
               if (states["lock.front_door"].state == "unlocked") return "mdi:lock-open-variant-outline";
@@ -463,15 +463,17 @@ cards:
               ]]]
             sd: >
               [[[
-                if (states["alarm_control_panel.home_alarm"].state == "disarmed")
+                if (states["alarm_control_panel.verisure_alarm"].state == "disarmed")
                   return `<span style="color: var(--text-color-sensor);">Alarm disarmed </span>`;
-                else if (states["alarm_control_panel.home_alarm"].state == "arming")
+                else if (states["alarm_control_panel.verisure_alarm"].state == "arming")
                   return `<span style="color: var(--text-color-sensor);">Alarm arming </span>`;
-                else if (states["alarm_control_panel.home_alarm"].state == "pending")
+                else if (states["alarm_control_panel.verisure_alarm"].state == "pending")
                   return `<span style="color: var(--text-color-sensor);">Alarm pending </span>`;
-                else if (states["alarm_control_panel.home_alarm"].state == "armed_away")
+                else if (states["alarm_control_panel.verisure_alarm"].state == "armed_away")
                   return `<span style="color: var(--text-color-sensor);">Alarm armed away </span>`;
-                else if (states["alarm_control_panel.home_alarm"].state == "triggered")
+                else if (states["alarm_control_panel.verisure_alarm"].state == "armed_home")
+                  return `<span style="color: var(--text-color-sensor);">Alarm armed home </span>`;
+                else if (states["alarm_control_panel.verisure_alarm"].state == "triggered")
                   return `<span style="color: var(--text-color-sensor);">Alarm triggered </span>`;
                 else
                   return `<span style="color: var(--text-color-sensor);">Alarm other </span>`;

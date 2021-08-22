@@ -40,7 +40,7 @@
       entity_id: sensor.basement_entrance_motion_battery_level
       below: 10
   action:
-    - service: notify.mobile_app_anthon_oneplus_3
+    - service: notify.mobile_app_anthon_oneplus_nord
       data:
         title: 'Kontakt Batteri'
         message: 'Tjek batteri på kontakter'
@@ -48,4 +48,12 @@
           ttl: 0
           priority: high
           channel: alarm_stream_max
+    # - service: notify.mobile_app_anthon_oneplus_3
+    #   data:
+    #     title: 'Kontakt Batteri'
+    #     message: 'Tjek batteri på kontakter'
+    #     data:
+    #       ttl: 0
+    #       priority: high
+    #       channel: alarm_stream_max
 

@@ -16,87 +16,92 @@
     - 'beat'
 
 
-
-
-- platform: rest
-  name: Renovation
-  resource: >-
-    https://usage.dk/jaff/?address=J%C3%B8rgen%20Jensens%20Vej%2034&county=naestved&index=
-  value_template: '{{ value_json.address }}'
-  scan_interval: 1800
-  json_attributes:
-    - services
 - platform: template
-  sensors:
-    renovation_storskrald_0:
-      friendly_name: Renovation - Storskrald
-      value_template: >-
-        {% set months = ["Januar",
-        "Februar","Marts","April","Maj","Juni","Juli", "August", "September",
-        "Oktober", "November", "December"] %} {% set date =
-        strptime(states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["date"],'%Y-%m-%d')
-        %} {% set day =
-        states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["day"]
-        %} {{ day }} d. {{date.day}}. {{months[date.month - 1]}} ( om {{
-        ((date.timestamp() - now().timestamp()) / (24 * 60 *
-        60))|round(0,'ceil') }} dage )
-      attribute_templates:
-        day: >-
-          {{
-          states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["day"]
-          }}
-        date: >-
-          {{
-          states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["date"]
-          }}
-        schedule: >-
-          {{
-          states.sensor.renovation.attributes["services"]["storskrald_0"]["schedule"]
-          }}
-    renovation_metalglasplast_0:
-      friendly_name: Renovation - Metal Glas Plast
-      value_template: >-
-        {% set months = ["Januar",
-        "Februar","Marts","April","Maj","Juni","Juli", "August", "September",
-        "Oktober", "November", "December"] %} {% set date =
-        strptime(states.sensor.renovation.attributes["services"]["metal glas
-        plast_0"]["next"]["date"],'%Y-%m-%d') %} {% set day =
-        states.sensor.renovation.attributes["services"]["metal glas
-        plast_0"]["next"]["day"] %} {{ day }} d. {{date.day}}.
-        {{months[date.month - 1]}} ( om {{ ((date.timestamp() -
-        now().timestamp()) / (24 * 60 * 60))|round(0,'ceil') }} dage )
-      attribute_templates:
-        day: >-
-          {{ states.sensor.renovation.attributes["services"]["metal glas
-          plast_0"]["next"]["day"] }}
-        date: >-
-          {{ states.sensor.renovation.attributes["services"]["metal glas
-          plast_0"]["next"]["date"] }}
-        schedule: >-
-          {{ states.sensor.renovation.attributes["services"]["metal glas
-          plast_0"]["schedule"] }}
-    renovation_madrest_0:
-      friendly_name: Renovation - Mad/rest
-      value_template: >-
-        {% set months = ["Januar",
-        "Februar","Marts","April","Maj","Juni","Juli", "August", "September",
-        "Oktober", "November", "December"] %} {% set date =
-        strptime(states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["date"],'%Y-%m-%d')
-        %} {% set day =
-        states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["day"]
-        %} {{ day }} d. {{date.day}}. {{months[date.month - 1]}} ( om {{
-        ((date.timestamp() - now().timestamp()) / (24 * 60 *
-        60))|round(0,'ceil') }} dage )
-      attribute_templates:
-        day: >-
-          {{
-          states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["day"]
-          }}
-        date: >-
-          {{
-          states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["date"]
-          }}
-        schedule: >-
-          {{
-          states.sensor.renovation.attributes["services"]["mad/rest_0"]["schedule"]
-          }}
+  sensors: 
+    cover_position_livingroom_1:
+      friendly_name: "Cover Position Living Room 1"
+      value_template: "{{ state_attr('cover.livingroom_blind_1', 'current_position') }}"
+
+
+# - platform: rest
+#   name: Renovation
+#   resource: >-
+#     https://usage.dk/jaff/?address=J%C3%B8rgen%20Jensens%20Vej%2034&county=naestved&index=
+#   value_template: '{{ value_json.address }}'
+#   scan_interval: 1800
+#   json_attributes:
+#     - services
+# - platform: template
+#   sensors:
+#     renovation_storskrald_0:
+#       friendly_name: Renovation - Storskrald
+#       value_template: >-
+#         {% set months = ["Januar",
+#         "Februar","Marts","April","Maj","Juni","Juli", "August", "September",
+#         "Oktober", "November", "December"] %} {% set date =
+#         strptime(states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["date"],'%Y-%m-%d')
+#         %} {% set day =
+#         states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["day"]
+#         %} {{ day }} d. {{date.day}}. {{months[date.month - 1]}} ( om {{
+#         ((date.timestamp() - now().timestamp()) / (24 * 60 *
+#         60))|round(0,'ceil') }} dage )
+#       attribute_templates:
+#         day: >-
+#           {{
+#           states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["day"]
+#           }}
+#         date: >-
+#           {{
+#           states.sensor.renovation.attributes["services"]["storskrald_0"]["next"]["date"]
+#           }}
+#         schedule: >-
+#           {{
+#           states.sensor.renovation.attributes["services"]["storskrald_0"]["schedule"]
+#           }}
+#     renovation_metalglasplast_0:
+#       friendly_name: Renovation - Metal Glas Plast
+#       value_template: >-
+#         {% set months = ["Januar",
+#         "Februar","Marts","April","Maj","Juni","Juli", "August", "September",
+#         "Oktober", "November", "December"] %} {% set date =
+#         strptime(states.sensor.renovation.attributes["services"]["metal glas
+#         plast_0"]["next"]["date"],'%Y-%m-%d') %} {% set day =
+#         states.sensor.renovation.attributes["services"]["metal glas
+#         plast_0"]["next"]["day"] %} {{ day }} d. {{date.day}}.
+#         {{months[date.month - 1]}} ( om {{ ((date.timestamp() -
+#         now().timestamp()) / (24 * 60 * 60))|round(0,'ceil') }} dage )
+#       attribute_templates:
+#         day: >-
+#           {{ states.sensor.renovation.attributes["services"]["metal glas
+#           plast_0"]["next"]["day"] }}
+#         date: >-
+#           {{ states.sensor.renovation.attributes["services"]["metal glas
+#           plast_0"]["next"]["date"] }}
+#         schedule: >-
+#           {{ states.sensor.renovation.attributes["services"]["metal glas
+#           plast_0"]["schedule"] }}
+#     renovation_madrest_0:
+#       friendly_name: Renovation - Mad/rest
+#       value_template: >-
+#         {% set months = ["Januar",
+#         "Februar","Marts","April","Maj","Juni","Juli", "August", "September",
+#         "Oktober", "November", "December"] %} {% set date =
+#         strptime(states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["date"],'%Y-%m-%d')
+#         %} {% set day =
+#         states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["day"]
+#         %} {{ day }} d. {{date.day}}. {{months[date.month - 1]}} ( om {{
+#         ((date.timestamp() - now().timestamp()) / (24 * 60 *
+#         60))|round(0,'ceil') }} dage )
+#       attribute_templates:
+#         day: >-
+#           {{
+#           states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["day"]
+#           }}
+#         date: >-
+#           {{
+#           states.sensor.renovation.attributes["services"]["mad/rest_0"]["next"]["date"]
+#           }}
+#         schedule: >-
+#           {{
+#           states.sensor.renovation.attributes["services"]["mad/rest_0"]["schedule"]
+#           }}

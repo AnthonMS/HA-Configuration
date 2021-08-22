@@ -35,3 +35,26 @@ radio_channel:
     - DR Nyheder
   initial: Pop FM
   icon: mdi:radio-fm
+
+
+
+
+
+# test_fan_preset_mode:
+#   options:
+#     - auto
+#     - smart
+#     - whoosh
+#   initial: auto
+
+# test_fan_osc:
+#   options:
+#     - Test 1
+#     - Test 2
+#   initial: Test 2
+
+# test_fan_direction:
+#   options:
+#     - Clockwise
+#     - Counter Clockwise
+#   initial: Clockwise

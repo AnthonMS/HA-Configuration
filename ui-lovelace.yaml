@@ -1,21 +1,11 @@
-title: Home
+# button_card_templates: !include ui/home_new/button_card_templates.yaml
 
 decluttering_templates:
   !include_dir_merge_named ui/decluttering_templates/
 
+  
+title: Home
 
 background: var(--background-image)
 views:
-  - !include ui/home.yaml
-  - !include ui/batteries.yaml
-  # - !include ui/home_phone.yaml
-  # - !include ui/alarm_panel.yaml
-  # - !include ui/floorplan.yaml
-  # - !include ui/light_temp.yaml
-  # - !include ui/1st_floor_temp.yaml
-  # - !include ui/2nd_floor_temp.yaml
-  # - !include ui/basement_temp.yaml
-
-  # - !include ui/anthon_phone.yaml
-  # - !include ui/cameras.yaml
-  # - !include ui/ha-switchplate.yaml
+  - !include ui/home_new/home.yaml

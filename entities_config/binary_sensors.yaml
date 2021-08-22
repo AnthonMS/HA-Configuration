@@ -1,12 +1,15 @@
-# - platform: mqtt
-#   name: 'Test Sensor'
-#   device_class: door
-#   state_topic: 'tele/RF_Bridge/RESULT'
-#   value_template: >-
-#     {% if value_json.RfReceived.Data == '58900A' %}
-#       {{'ON'}}
-#     {% elif value_json.RfReceived.Data == '58900E' %}
-#       {{'OFF'}}
-#     {% else %}
-#       {{ states('binary_sensor.test_sensor') | upper }}
-#     {% endif %}
+- platform: template
+  sensors: 
+    cover_movement_livingroom_1:
+      friendly_name: "On if cover is moving"
+      # When this is true, the sensor will be 'on'. It is true when the thing has moved less than half a second ago. 
+      # It will be off if it hasn't moved in the delay_off time + this time.
+      # Tweak these values to make it as responsive as you need. Not sure the performance impact of making these too short, 
+      # nor do I know how often HomeAssistant will update the sensor states in the backend. If it's too short of a duration, 
+      # it may never be true as the next time it comes to check, it could already be more than the duration you set. 
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.cover_position_livingroom_1.last_updated)) < 0.5 }}'
+      delay_off: 
+        seconds: 1
+        
+    
+# states.sensor.cover_position_livingroom_1.last_updated

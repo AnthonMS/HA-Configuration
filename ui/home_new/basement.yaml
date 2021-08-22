@@ -1,0 +1,54 @@
+type: grid
+title: Basement
+view_layout:
+  grid-area: basement
+columns: 4
+cards:
+###########  Light Basement Room Spots  ###########
+  - type: vertical-stack
+    cards:
+    - type: custom:decluttering-card
+      template: light_spots_homekit
+      variables:
+        - name: Room
+        - entity: light.basement_room_spots
+        - card_height: 100px
+
+###########  Slider Basement Room Spots  ###########
+    - type: custom:decluttering-card
+      template: slider_homekit
+      variables:
+        - entity: light.basement_room_spots
+        
+###########  Light Basement Entrance Spots  ###########
+  - type: vertical-stack
+    cards:
+    - type: custom:decluttering-card
+      template: light_spots_homekit
+      variables:
+        - name: Entrance
+        - entity: light.basement_entrance_spots
+        - card_height: 100px
+
+###########  Slider Basement Entrance Spots  ###########
+    - type: custom:decluttering-card
+      template: slider_homekit
+      variables:
+        - entity: light.basement_entrance_spots
+
+    
+###########  Light Basement Hall Spots  ###########
+  - type: vertical-stack
+    cards:
+    - type: custom:decluttering-card
+      template: light_spots_homekit
+      variables:
+        - name: Hall
+        - entity: light.basement_hall_spots
+        - card_height: 100px
+
+###########  Slider Basement Hall Spots  ###########
+    - type: custom:decluttering-card
+      template: slider_homekit
+      variables:
+        - entity: light.basement_hall_spots

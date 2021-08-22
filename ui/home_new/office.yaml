@@ -1,0 +1,48 @@
+type: grid
+title: Office
+view_layout:
+  grid-area: office
+columns: 2
+cards:
+###########  Light Grono Lamp Office  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_wled_homekit
+        variables:
+          - name: Desk Lamp
+          - entity: light.grono_lamp_office
+          - icon: mdi:desk-lamp
+          - card_height: 100px
+
+###########  Slider Grono Lamp Office  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.grono_lamp_office
+
+
+      
+  # - type: custom:slider-button-card
+  #   entity: light.grono_lamp_office
+  #   name: Desk Lamp
+  #   icon: 
+  #     icon: mdi:desk-lamp
+  #     use_state_color: true
+  #   # slider:
+  #   #   direction: left-right
+  #   #   background: gradient
+  #   #   use_state_color: true
+  #   #   # use_percentage_bg_opacity: true
+  #   #   show_track: true
+  #   #   # toggle_on_click: false
+  #   #   # attribute: brightness_pct
+  #   #   # invert: false
+  #   action_button:
+  #     icon: mdi:power
+  #     tap_action: 
+  #       action: toggle
+  #   style: |
+  #     ha-card {
+  #       border-radius: 10px;
+  #     }

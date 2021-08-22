@@ -24,6 +24,27 @@ trigger:
 action:
   - choose:
 
+    - alias: "If on/off event, turn on/off light 2"
+      conditions:
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.event.data.event == 1002 or trigger.event.data.event == 2002 }}"
+            - condition: state
+              entity_id: !input light
+              state: 'off'
+      sequence:
+        - service: light.turn_on
+          data:
+            entity_id: !input light
+            transition: 0.5
+            brightness_pct: >
+              {% if trigger.event.data.event == 1002 %}
+                100
+              {% elif trigger.event.data.event == 2002 %}
+                50
+              {% endif %}
+
     - alias: "If on/off event, turn on/off light"
       conditions:
         - condition: template

@@ -1,0 +1,30 @@
+type: grid
+title: Bedroom
+view_layout:
+  grid-area: bedroom
+columns: 2
+cards:
+
+###########  Light Bedroom Spots  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_spots_homekit
+        variables:
+          - name: Bedroom
+          - entity: light.bedroom_spots
+          - card_height: 100px
+
+###########  Slider Bedroom Spots  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.bedroom_spots
+            
+
+
+################# Bedroom Blind #######################
+  - type: custom:decluttering-card
+    template: roller_shade_homekit
+    variables:
+      - entity: cover.bedroom_blind

@@ -1,0 +1,565 @@
+type: grid
+title: Other
+view_layout:
+  grid-area: otherfirst
+columns: 3
+cards:
+
+  # - type: custom:button-card
+  #   entity: light.entrance_spots
+  #   name: Entrance
+  #   icon: mdi:wall-sconce-flat
+  #   show_state: false
+  #   show_name: true
+  #   show_label: false
+  #   styles: 
+  #     card:
+  #       # - border: "1px solid red"
+  #       - background-color: >
+  #           [[[
+  #             if (entity.state == "off") return "rgba(230, 230, 230, 0.5)";
+  #             else return "rgba(255, 255, 255, 1)";
+  #           ]]]
+  #       - border-radius: 10%
+  #       - height: 100%
+  #       - min-height: 100%
+  #       # - width: 100%
+  #       - padding: 10%
+  #       - color: ivory
+  #       - font-size: 10px
+  #       - text-shadow: 0px 0px 0px black
+  #       - text-transform: capitalize
+  #       - margin: 0px
+  #     grid:
+  #       - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+  #       - grid-template-columns: 1fr 1fr
+  #       - grid-template-rows: 1fr min-content min-content min-content min-content
+  #     name:
+  #       - font-weight: bold
+  #       - font-size: 13px
+  #       - color: white
+  #       - align-self: middle
+  #       - justify-self: start
+  #       - padding-bottom: 4px
+  #       - color: black
+  #     img_cell:
+  #       - justify-content: start
+  #       - align-items: start
+  #       - margin: none
+  #     icon:
+  #       - width: 30px
+  #       - margin-top: -10%
+  #       - color: >
+  #           [[[
+  #             if (entity.state == "off") return "rgba(86, 86, 86, 0.5)";
+  #             else return "rgba(253, 216, 53, 1)";
+  #           ]]]
+  #     custom_fields:
+  #       i:
+  #         - border: "1px solid yellow"
+  #       temp:
+  #         - border: "1px solid green"
+  #       cpu:
+  #         - border: "1px solid blue"
+  #       ram:
+  #         - border: "1px solid yellow"
+  #       sd:
+  #         - border: "1px solid red"
+  #         - align-self: middle
+  #         - justify-self: start
+  #         - --text-color-sensor: black
+  #     #    - --text-color-sensor: '[[[ if (states["sensor.raspi_sd"].state > 80) return "red"; ]]]'
+  #   custom_fields: 
+  #     i: i
+  #     temp: temp
+  #     cpu: cpu
+  #     ram: ram
+  #     sd: >
+  #       [[[
+  #         if (entity.state == "on") 
+  #           return `<span style="color: var(--text-color-sensor);"> ${ Math.round(entity.attributes.brightness/2.55) } </span>`;
+  #         else
+  #           return `<span style="color: var(--text-color-sensor);"> ${ entity.state } </span>`;
+  #       ]]]
+  #   tap_action:
+  #     action: toggle
+  #   double_tap_action:
+  #     action: more-info
+  #   hold_action:
+  #     action: fire-dom-event
+  #     browser_mod:
+  #       command: popup
+  #       hide_header: true
+  #       card: 
+  #         type: custom:light-popup-card
+  #         entity: '[[entity]]'
+  #         icon: mdi:wall-sconce-flat
+  #         fullscreen: false
+  #         # actions:
+  #         #   - service: light.turn_on
+  #         #     service_data:
+  #         #       entity_id: light.grono_lamp_office
+  #         #     color: "#FDCA64"
+  #         #     name: Test
+
+
+# ############  TESTING!!!!!!!!!  ###########
+  # - type: custom:my-button-cover
+  #   entity: cover.livingroom_blind_1
+  #   icon: mdi:blinds
+  #   slider: true
+  #   row2:
+  #     text: "<cover_percentage>"
+
+  # - type: custom:my-button-light
+  #   entity: light.entrance_spots
+  #   icon: mdi:wall-sconce-flat
+  #   slider: 
+  #     minSet: 1
+  #   row2:
+  #     text: "<light_percentage>"
+  #   tap_action:
+  #     action: toggle
+
+
+
+
+
+
+  # - type: custom:my-button-light
+  #   entity: light.entrance_spots
+  #   icon: mdi:wall-sconce-flat
+  #   actionArea: main
+  #   row1: 
+  #     text: "Entrance"
+  #   row2: 
+  #     text: "<light_percentage>"
+  #     textOff: "Off"
+  #   slider:
+  #     minSet: 1
+  #   styles:
+  #     card:
+  #       height: 100%
+  #       width: 100%
+  #       borderRadius: 10%
+  #       backgroundColor: rgba(255, 255, 255, 0.90)
+  #       backgroundColorOff: rgba(230, 230, 230, 0.5)
+  #     icon:
+  #       size: 1.5
+  #     slider:
+  #       position: "right"
+  #       height: 40px
+  #       backgroundColor: transparent
+  #     text:
+  #       row1:
+  #         color: black
+  #         oneLine: true
+  #         size: 15px
+  #       row2:
+  #         color: black
+  #         oneLine: true
+  #         size: 13px
+  #       row3:
+  #         color: black
+  #         oneLine: true
+  #         size: 13px
+  #   tap_action:
+  #     action: toggle
+
+###########  Light Front Door Spots  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_spots_homekit
+        variables:
+          - name: Front Door
+          - entity: light.front_door_spots
+          - card_height: 100px
+
+###########  Slider Front Door Spots  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.front_door_spots
+
+
+
+###########  Light Entrance Spots  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_spots_homekit
+        variables:
+          - name: Entrance
+          - entity: light.entrance_spots
+          - card_height: 100px
+
+###########  Slider Entrance Spots  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.entrance_spots
+
+
+###########  Light Stairs Spots  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: light_spots_homekit
+        variables:
+          - name: Stairs
+          - entity: light.stairs_spots
+          - card_height: 100px
+
+###########  Slider Stairs Spots  ###########
+      - type: custom:decluttering-card
+        template: slider_homekit
+        variables:
+          - entity: light.stairs_spots
+
+###########  Television  ###########
+  - type: vertical-stack
+    cards:
+    - type: custom:button-card
+      entity: media_player.living_room_tv
+      icon: mdi:television
+      name: Television
+      show_state: false
+      show_name: true
+      show_label: false
+      styles:
+        card:
+          - background-color: >
+              [[[
+                if (states["media_player.living_room_tv"].state == "off") return "rgba(230, 230, 230, 0.5)";
+                else if (states["media_player.living_room_tv"].state == "unavailable") return "rgba(230, 230, 230, 0.5)";
+                else return "rgba(255, 255, 255, 1)";
+              ]]]
+          - border-radius: 15%
+          - height: 100px
+          - padding: 10%
+          - color: ivory
+          - font-size: 10px
+          - text-shadow: 0px 0px 0px black
+          - text-transform: capitalize
+        grid:
+          - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+          - grid-template-columns: 1fr 1fr
+          - grid-template-rows: 1fr min-content min-content min-content min-content
+        name:
+          - font-weight: bold
+          - font-size: 13px
+          - color: white
+          - align-self: middle
+          - justify-self: start
+          - padding-bottom: 4px
+          - color: black
+        img_cell:
+          - justify-content: start
+          - align-items: start
+          - margin: none
+        icon:
+          #- margin-top: -10%
+          - width: 25px
+          - color: >
+              [[[
+                if (states["media_player.living_room_tv"].state == "off") return "rgba(88, 88, 88, 1)";
+                else if (states["media_player.living_room_tv"].state == "unavailable") return "rgba(88, 88, 88, 1)";
+                else return "rgba(0, 255, 0, 1)";
+              ]]]
+        custom_fields:
+          ram:
+            - padding-bottom: 2px
+            - align-self: middle
+            - justify-self: start
+            - --text-color-sensor: black
+          sd:
+            - align-self: middle
+            - justify-self: start
+            - --text-color-sensor: black
+      custom_fields:
+        ram: >
+          [[[
+            return `<span style="color: var(--text-color-sensor);"> ${ states["media_player.living_room_tv"].state } </span>`
+          ]]]
+        sd: >
+          [[[
+            if (states["media_player.living_room_tv"].state == "off") 
+              return `<span style="color: var(--text-color-sensor);"> </span>`;
+            else if (states["media_player.living_room_tv"].state == "unavailable") 
+              return `<span style="color: var(--text-color-sensor);"> </span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "com.google.android.youtube.tv")
+              return `<span style="color: var(--text-color-sensor);">YouTube</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "org.droidtv.nettvbrowser")
+              return `<span style="color: var(--text-color-sensor);">TV2</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "com.netflix.ninja")
+              return `<span style="color: var(--text-color-sensor);">Netflix</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "org.videolan.vlc")
+              return `<span style="color: var(--text-color-sensor);">VLC</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "dk.dr.tvplayer")
+              return `<span style="color: var(--text-color-sensor);">DR</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "com.hbo_android_tv")
+              return `<span style="color: var(--text-color-sensor);">HBO</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "com.viaplay.android")
+              return `<span style="color: var(--text-color-sensor);">Viaplay</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "com.disney.disneyplus")
+              return `<span style="color: var(--text-color-sensor);">Disney+</span>`;
+            else if (states["media_player.living_room_tv"].attributes.app_id == "org.xbmc.kodi")
+              return `<span style="color: var(--text-color-sensor);">Kodi</span>`;
+            else
+              return `<span style="color: var(--text-color-sensor);">Other</span>`;
+          ]]]
+      tap_action:
+        action: fire-dom-event
+        browser_mod:
+          command: popup
+          hide_header: true
+          card: !include ../popups/television_living_room.yaml
+      hold_action:
+        action: more-info
+              
+###########  Slider Living Room TV  ###########
+    - type: custom:slider-card
+      entity: media_player.living_room_tv
+      height: '30px'
+      radius: '5px'
+      mainSliderColor: 'rgba(255, 255, 255, 1)'
+      secondarySliderColor: 'rgba(65, 65, 65, 0)'
+      thumbWidth: '10px'
+      thumbHeight: '30px'
+      thumbColor: 'rgba(65, 65, 65,1)'
+      thumbHorizontalPadding: '4px'
+      thumbVerticalPadding: '5px'
+      style: |
+        ha-card {
+          --ha-card-background: rgba(230, 230, 230, 0.3);
+          border-radius: 5px;
+        }
+
+
+
+
+###########  Speakers Living Room  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        entity: media_player.living_room_speakers
+        icon: mdi:speaker
+        name: Speakers
+        show_state: false
+        show_name: true
+        show_label: false
+        styles:
+          card:
+            - background-color: >
+                [[[
+                  if (states["media_player.living_room_speakers"].state == "idle")
+                    return "rgba(230, 230, 230, 0.5)";
+                  else if (states["media_player.living_room_speakers"].state == "paused") 
+                    return "rgba(230, 230, 230, 0.5)";
+                  else if (states["media_player.living_room_speakers"].state == "unavailable") 
+                    return "rgba(230, 230, 230, 0.5)";
+                  else 
+                    return "rgba(255, 255, 255, 1)";
+                ]]]
+            - border-radius: 15%
+            - height: 100px
+            - padding: 10%
+            - color: ivory
+            - font-size: 10px
+            - text-shadow: 0px 0px 0px black
+            - text-transform: capitalize
+          grid:
+            - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+            - grid-template-columns: 1fr 1fr
+            - grid-template-rows: 1fr min-content min-content min-content min-content
+          name:
+            - font-weight: bold
+            - font-size: 13px
+            - color: white
+            - align-self: middle
+            - justify-self: start
+            - padding-bottom: 4px
+            - color: black
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            - margin-top: -10%
+            - width: 25px
+            - color: >
+                [[[
+                  if (states["media_player.living_room_speakers"].state == "idle")
+                    return "rgba(88, 88, 88, 1)";
+                  else if (states["media_player.living_room_speakers"].state == "paused") 
+                    return "rgba(88, 88, 88, 1)";
+                  else if (states["media_player.living_room_speakers"].state == "unavailable") 
+                    return "rgba(88, 88, 88, 1)";
+                  else 
+                    return "rgba(0, 255, 0, 1)";
+                ]]]
+          custom_fields:
+            ram:
+              - padding-bottom: 2px
+              - align-self: middle
+              - justify-self: start
+              - --text-color-sensor: black
+            sd:
+              - align-self: middle
+              - justify-self: start
+              - --text-color-sensor: black
+        custom_fields:
+          ram: >
+            [[[
+              return `<span style="color: var(--text-color-sensor);"> ${ states["media_player.living_room_speakers"].state } </span>`
+            ]]]
+          sd: >
+            [[[
+              if (states["media_player.living_room_speakers"].attributes.media_title != undefined)
+                return `<span style="color: var(--text-color-sensor);">${ states["media_player.living_room_speakers"].attributes.media_title } </span>`
+              else
+                return `<span style="color: var(--text-color-sensor);">  </span>`
+            ]]]
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            hide_header: true
+            card: !include ../popups/speaker_test.yaml
+        hold_action:
+          action: more-info
+              
+###########  Slider Living Room Speakers  ###########
+      - type: custom:slider-card
+        entity: media_player.living_room_speakers
+        height: '30px'
+        radius: '5px'
+        mainSliderColor: 'rgba(255, 255, 255, 1)'
+        secondarySliderColor: 'rgba(65, 65, 65, 0)'
+        thumbWidth: '10px'
+        thumbHeight: '30px'
+        thumbColor: 'rgba(65, 65, 65,1)'
+        thumbHorizontalPadding: '4px'
+        thumbVerticalPadding: '5px'
+        style: |
+          ha-card {
+            --ha-card-background: rgba(230, 230, 230, 0.3);
+            border-radius: 5px;
+          }
+        
+###########  Lock Front Door  ###########
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        entity: alarm_control_panel.verisure_alarm
+        icon: >
+          [[[
+            if (states["lock.front_door"].state == "unlocked") return "mdi:lock-open-variant-outline";
+            else return "mdi:lock-outline";
+          ]]]
+        name: Front Door
+        show_state: false
+        show_name: true
+        show_label: false
+        styles:
+          card:
+            - background-color: >
+                [[[
+                  if (states["lock.front_door"].state == "unlocked") return "rgba(230, 230, 230, 0.5)";
+                  else return "rgba(255, 255, 255, 1)";
+                ]]]
+            - border-radius: 15%
+            - height: 100px
+            - padding: 10%
+            - color: ivory
+            - font-size: 10px
+            - text-shadow: 0px 0px 0px black
+            - text-transform: capitalize
+          grid:
+            - grid-template-areas: '"i temp" "n n" "cpu cpu" "ram ram" "sd sd"'
+            - grid-template-columns: 1fr 1fr
+            - grid-template-rows: 1fr min-content min-content min-content min-content
+          name:
+            - font-weight: bold
+            - font-size: 13px
+            - color: white
+            - align-self: middle
+            - justify-self: start
+            - padding-bottom: 4px
+            - color: black
+          img_cell:
+            - justify-content: start
+            - align-items: start
+            - margin: none
+          icon:
+            #- margin-top: -10%
+            - width: 25px
+            - color: >
+                [[[
+                  if (states["lock.front_door"].state == "unlocked") return "rgba(88, 88, 88, 1)";
+                  else return "rgba(255, 0, 0, 1)";
+                ]]]
+          custom_fields:
+            ram:
+              - padding-bottom: 2px
+              - align-self: middle
+              - justify-self: start
+              - --text-color-sensor: black
+            sd:
+              - align-self: middle
+              - justify-self: start
+              - --text-color-sensor: black
+        custom_fields:
+          ram: >
+            [[[
+              return `<span style="color: var(--text-color-sensor);"> ${ states["lock.front_door"].state } </span>`
+            ]]]
+          sd: >
+            [[[
+              if (states["alarm_control_panel.verisure_alarm"].state == "disarmed")
+                return `<span style="color: var(--text-color-sensor);">Alarm disarmed </span>`;
+              else if (states["alarm_control_panel.verisure_alarm"].state == "arming")
+                return `<span style="color: var(--text-color-sensor);">Alarm arming </span>`;
+              else if (states["alarm_control_panel.verisure_alarm"].state == "pending")
+                return `<span style="color: var(--text-color-sensor);">Alarm pending </span>`;
+              else if (states["alarm_control_panel.verisure_alarm"].state == "armed_away")
+                return `<span style="color: var(--text-color-sensor);">Alarm armed away </span>`;
+              else if (states["alarm_control_panel.verisure_alarm"].state == "armed_home")
+                return `<span style="color: var(--text-color-sensor);">Alarm armed home </span>`;
+              else if (states["alarm_control_panel.verisure_alarm"].state == "triggered")
+                return `<span style="color: var(--text-color-sensor);">Alarm triggered </span>`;
+              else
+                return `<span style="color: var(--text-color-sensor);">Alarm other </span>`;
+            ]]]
+        tap_action:
+          action: call-service
+          service: script.lock_button
+        hold_action:
+          action: more-info
+        double_tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            hide_header: true
+            card: !include ../popups/lock_front_door.yaml
+
+###########  Slider Front Door Spots  ###########
+      - type: custom:slider-card
+        entity: lock.front_door
+        maxSet: 70
+        height: 30px
+        radius: 5px
+        mainSliderColor: rgba(255, 255, 255, 0.25)
+        mainSliderColorOff: rgba(255, 255, 255, 1)
+        secondarySliderColor: 'rgba(65, 65, 65, 0)'
+        thumbWidth: '10px'
+        thumbHeight: '30px'
+        thumbColor: 'rgba(65, 65, 65,1)'
+        thumbHorizontalPadding: '4px'
+        thumbVerticalPadding: '5px'
+        style: |
+          ha-card {
+            --ha-card-background: rgba(230, 230, 230, 0.3);
+            border-radius: 5px;
+          }

@@ -1,0 +1,48 @@
+- alias: notify_on_alarm_statechange_verisure
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.verisure_alarm
+  action:
+    - service: notify.mobile_app_anthon_oneplus_nord
+      data:
+        title: 'Verisure Alarm'
+        message: >
+          Alarm changed from {{ trigger.from_state.state }}
+          to {{ trigger.to_state.state }}
+          by {{ trigger.to_state.attributes.changed_by }}
+          at {{ states('sensor.date_time') }}
+        data:
+          color: 'red'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+          actions:
+            - action: "arm_alarm_verisure"
+              title: "Arm Away"
+            - action: "arm_alarm_home_versiure"
+              title: "Arm Home"
+            - action: "disarm_alarm_verisure"
+              title: "Disarm"
+
+# - alias: notification_action_test
+#   trigger:
+#     - platform: state
+#       entity_id: alarm_control_panel.verisure_alarm
+#       to: "tester123"
+#   action:
+#     - service: notify.mobile_app_anthon_oneplus_nord
+#       data:
+#         title: 'Test Notification'
+#         message: "Click one of the buttons below to test it's functionalitys"
+#         data:
+#           color: 'red'
+#           ttl: 0
+#           priority: high
+#           channel: alarm_stream_max
+#           actions:
+#             - action: "arm_alarm_verisure"
+#               title: "Arm Away"
+#             - action: "arm_alarm_home_versiure"
+#               title: "Arm Home"
+#             - action: "disarm_alarm_verisure"
+#               title: "Disarm"

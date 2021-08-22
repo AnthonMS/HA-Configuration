@@ -34,7 +34,7 @@
         - script.door_bell_notify_anthon
         - script.door_bell_notify_tv
         - script.door_bell_notify_ipad
-        # - script.front_door_snapshot
+        - script.front_door_snapshot
 
 - alias: Door Bell Double Click
   trigger:
@@ -49,7 +49,7 @@
         - script.door_bell_notify_anthon
         - script.door_bell_notify_tv
         - script.door_bell_notify_ipad
-        # - script.front_door_snapshot
+        - script.front_door_snapshot
 
 - alias: Door Bell Triple Click
   trigger:
@@ -78,4 +78,4 @@
         - script.door_bell_notify_anthon
         - script.door_bell_notify_tv
         - script.door_bell_notify_ipad
-        # - script.front_door_snapshot
+        - script.front_door_snapshot

@@ -1,0 +1,37 @@
+- alias: Disarm Alarm On Notification Action
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: disarm_alarm_verisure
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      data:
+        entity_id: alarm_control_panel.verisure_alarm
+        code: !secret verisure_ha_code
+
+- alias: Arm Alarm Home On Notification Action
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: arm_alarm_home_versiure
+  action:
+    - service: alarm_control_panel.alarm_arm_home
+      data:
+        entity_id: alarm_control_panel.verisure_alarm
+        code: !secret verisure_ha_code
+
+- alias: Arm Alarm On Notification Action
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: arm_alarm_versiure
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      data:
+        entity_id: alarm_control_panel.verisure_alarm
+        code: !secret verisure_ha_code
+
+

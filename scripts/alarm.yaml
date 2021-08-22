@@ -69,16 +69,7 @@ alarm_blink_lights_red:
 
 alarm_notify_anthon:
   sequence:
-    - service: notify.mobile_app_anthon_oneplus_3
-      data:
-        title: "ALARM!"
-        message: "Alarm er blevet triggered!"
-        data:
-          color: 'red'
-          ttl: 0
-          priority: high
-          channel: alarm_stream_max
-    - service: notify.mobile_app_anthon_oneplus_3
+    - service: notify.mobile_app_anthon_oneplus_nord
       data:
         title: "Alarm has been triggered!"
         message: TTS
@@ -87,3 +78,31 @@ alarm_notify_anthon:
           ttl: 0
           priority: high
           channel: alarm_stream_max
+    - service: notify.mobile_app_anthon_oneplus_nord
+      data:
+        title: "ALARM!"
+        message: "Alarm has been triggered!"
+        data:
+          color: 'red'
+          ttl: 0
+          priority: high
+          channel: alarm_stream_max
+
+    # - service: notify.mobile_app_anthon_oneplus_3
+    #   data:
+    #     title: "ALARM!"
+    #     message: "Alarm has been triggered!"
+    #     data:
+    #       color: 'red'
+    #       ttl: 0
+    #       priority: high
+    #       channel: alarm_stream_max
+    # - service: notify.mobile_app_anthon_oneplus_3
+    #   data:
+    #     title: "Alarm has been triggered!"
+    #     message: TTS
+    #     data:
+    #       color: 'red'
+    #       ttl: 0
+    #       priority: high
+    #       channel: alarm_stream_max

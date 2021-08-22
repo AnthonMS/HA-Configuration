@@ -1,34 +1,34 @@
-- alias: Phone Battery Below 15
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.oneplus_a3003_battery_level
-    below: 15
-  condition:
-    - condition: state
-      entity_id: device_tracker.anthon
-      state: 'home'
-  action:
-    - service: tts.google_translate_say
-      entity_id: media_player.living_room_google_speaker
-      data_template:
-        message: 'Telefon har {{ states("sensor.oneplus_a3003_battery_level") }} procent tilbage.'
-        language: 'da'
+# - alias: Phone Battery Below 15
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sensor.oneplus_a3003_battery_level
+#     below: 15
+#   condition:
+#     - condition: state
+#       entity_id: device_tracker.anthon
+#       state: 'home'
+#   action:
+#     - service: tts.google_translate_say
+#       entity_id: media_player.living_room_google_speaker
+#       data_template:
+#         message: 'Telefon har {{ states("sensor.oneplus_a3003_battery_level") }} procent tilbage.'
+#         language: 'da'
 
-- alias: Phone Battery Above 99
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.oneplus_a3003_battery_level
-    above: 99
-  condition:
-    - condition: state
-      entity_id: device_tracker.anthon
-      state: 'home'
-  action:
-    - service: tts.google_translate_say
-      entity_id: media_player.living_room_google_speaker
-      data:
-        message: 'Telefon fuldt opladt.'
-        language: 'da'
+# - alias: Phone Battery Above 99
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sensor.oneplus_a3003_battery_level
+#     above: 99
+#   condition:
+#     - condition: state
+#       entity_id: device_tracker.anthon
+#       state: 'home'
+#   action:
+#     - service: tts.google_translate_say
+#       entity_id: media_player.living_room_google_speaker
+#       data:
+#         message: 'Telefon fuldt opladt.'
+#         language: 'da'
 
 
 

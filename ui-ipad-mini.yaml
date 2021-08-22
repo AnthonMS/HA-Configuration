@@ -1,9 +1,0 @@
-title: Ipad Mini
-
-decluttering_templates:
-  !include_dir_merge_named ui/decluttering_templates/
-
-
-background: var(--background-image)
-views:
-  - !include ui/ipad-mini.yaml

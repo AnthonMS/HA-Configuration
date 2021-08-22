@@ -1,8 +1,0 @@
-title: Basement
-icon: mdi:home-floor-b
-panel: false
-
-cards:
-  - type: vertical-stack
-    cards:
-      - !include basement_temp/1_basement.yaml

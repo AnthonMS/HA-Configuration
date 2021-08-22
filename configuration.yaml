@@ -151,27 +151,6 @@ device_tracker: !include entities_config/device_trackers.yaml
 
 lovelace:
   mode: yaml
-  dashboards:
-    dev-view:
-      mode: yaml
-      filename: ui-lovelace-old.yaml
-      title: Old UI
-      show_in_sidebar: true
-      require_admin: false
-    ipad-view: # Needs to contain a hyphen (-)
-      mode: yaml
-      filename: ui-ipad.yaml
-      title: Ipad
-      icon: mdi:tablet-android
-      show_in_sidebar: false
-      require_admin: false
-    ipad-mini-view: # Needs to contain a hyphen (-)
-      mode: yaml
-      filename: ui-ipad-mini.yaml
-      title: Ipad Mini
-      icon: mdi:tablet-android
-      show_in_sidebar: false
-      require_admin: false
   resources:
     - url: /local/plugins/time-input-row.js
       type: js
